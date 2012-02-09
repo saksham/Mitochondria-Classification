@@ -18,6 +18,8 @@ function [ nn ] = nnCreate(input_dim, output_dim, hidden_layer_nodes_count)
 %                                     number of the number of hidden layers
 
 nn.layers_count = length(hidden_layer_nodes_count);
+EPSILON_INIT = 0.12;
+
 for i = 1:(nn.layers_count + 1)
     if (i == 1)
         rows = input_dim + 1;
@@ -30,7 +32,8 @@ for i = 1:(nn.layers_count + 1)
     else
         cols = hidden_layer_nodes_count(i);
     end
-    nn.theta{i} = zeros(rows, cols);
+    nn.theta{i} = rand(rows, cols) * 2 * EPSILON_INIT - EPSILON_INIT;
+    
 end
 
 end
