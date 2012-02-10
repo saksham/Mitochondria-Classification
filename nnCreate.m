@@ -7,7 +7,10 @@ function [ nn ] = nnCreate(input_dim, output_dim, hidden_layer_sizes)
 %           layers_count: The total number of layers in the network
 %           layer_sizes: The number of nodes in all layers including the
 %                        input and output layers
+%           theta_count: The number of theta matrices
 %           theta:  An array containing weight matrix for each hidden layer
+%           theta_total_numel: A number indicating the sum total of the
+%                              number of elements in all theta matrices.
 %           
 %           The structure will be based on the following input parameters.
 %           input_dim:  the dimensions of the input. In other words, this
@@ -23,6 +26,8 @@ function [ nn ] = nnCreate(input_dim, output_dim, hidden_layer_sizes)
 nn.hidden_layers_count = numel(hidden_layer_sizes);
 nn.layers_count = 2 + nn.hidden_layers_count;
 nn.layer_sizes = [input_dim, hidden_layer_sizes, output_dim];
+nn.theta_count = 1 + nn.hidden_layers_count;
+nn.theta_total_numel = 0;
 
 EPSILON_INIT = 0.12;
 
@@ -30,7 +35,7 @@ for i = 1:(nn.layers_count - 1)
     rows = nn.layer_sizes(i) + 1;
     cols = nn.layer_sizes(i + 1);
     nn.theta{i} = rand(rows, cols) * 2 * EPSILON_INIT - EPSILON_INIT;
-    
+    nn.theta_total_numel = nn.theta_total_numel + rows * cols;
 end
 
 end
