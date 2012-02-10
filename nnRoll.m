@@ -1,15 +1,19 @@
-function [ theta_vec ] = nnRoll( nn )
-%NNROLL Rolls the theta matrices into a 1-dimensional vector
-%   NNROLL(nn) Given a neural network, it rolls all the theta matrices into
-%   a single 1 dimensional vector
+function [new_nn] = nnRoll(nn, theta_vec)
+%NNROLL Rolls up the given vector and returns an adjusted neural network
+%   NNROLL(nn, theta_vec): Given a neural network and an an unrolled 
+%   theta vector, this method first creates a copy of the given neural
+%   network, and then it rolls up the given theta vector and sets
+%   the theta matrices of the new neural network to correspond to the 
+%   rolled-up vectors.
 %
-% See also NNUNROLL
+%   See also NNUNROLL
 
-theta_vec = zeros(nn.theta_total_numel, 1);
+new_nn = nn;
 start_index = 1;
-for i = 1:nn.theta_count
-    count = numel(nn.theta{i});
-    theta_vec(start_index:start_index + count - 1) = nn.theta{i}(:);
+for i = 1:new_nn.theta_count
+    count = numel(new_nn.theta{i});
+    new_nn.theta{i} = reshape(theta_vec(start_index: ...
+        start_index + count - 1), size(nn.theta{i}));
     start_index = start_index + count;
 end
 

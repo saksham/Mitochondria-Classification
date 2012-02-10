@@ -1,19 +1,15 @@
-function [new_nn] = nnUnroll(nn, theta_vec)
-%NNUNROLL Unrolls the given vector and returns an adjusted neural network
-%   NNUNROLL(nn, theta_vec): Given a neural network and an an unrolled 
-%   theta vector, this method first creates a copy of the given neural
-%   network, and then it unrolls the given theta vector and sets
-%   the theta matrices of the new neural network to correspond to the 
-%   unrolled matrices.
+function [ theta_vec ] = nnActualUnroll( nn )
+%NNUNROLL Unrolls the theta matrices into a 1-dimensional vector
+%   NNUNROLL(nn) Given a neural network, it unrolls all the theta matrices
+%   into a single 1 dimensional vector
 %
-%   See also NNROLL
+% See also NNROLL
 
-new_nn = nn;
+theta_vec = zeros(nn.theta_total_numel, 1);
 start_index = 1;
-for i = 1:new_nn.theta_count
-    count = numel(new_nn.theta{i});
-    new_nn.theta{i} = reshape(theta_vec(start_index: ...
-        start_index + count - 1), size(nn.theta{i}));
+for i = 1:nn.theta_count
+    count = numel(nn.theta{i});
+    theta_vec(start_index:start_index + count - 1) = nn.theta{i}(:);
     start_index = start_index + count;
 end
 
