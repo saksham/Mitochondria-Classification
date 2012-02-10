@@ -3,7 +3,7 @@ function [sharpness]=estimate_sharpness(G)
 % Sum of all gradient norms / number of pixels give us the sharpness
 % metric.
 
-[Gx, Gy]=gradient(G);
+[Gx, Gy]=gradient(double(G));
 
 S=sqrt(Gx.*Gx+Gy.*Gy);
 sharpness=sum(sum(S))./(numel(Gx));
