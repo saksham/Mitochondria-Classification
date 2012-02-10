@@ -1,4 +1,4 @@
-[stack, imgread] = tiffread2('bcis78.stk', 1, 1000);
+[stack, imgread] = tiffread2('../Resources/STK Files/10_Z Series-2.stk', 1, 1000);
 
 sharpness = zeros(1,9);
 stacksize = size(stack);
