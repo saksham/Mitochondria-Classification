@@ -2,18 +2,16 @@ function testPickSharpestImage
 % TESTPICKSHARPESTIMAGE Checks whether or not the sharpest image is
 % selected
 %
-% The sharpest image on the stack: bcis78-2.stk appears to be the 6th
+% The sharpest image on the stack: bcis78-2.stk appears to be the 7th
 % image. So, this test checks whether or not the estimate sharpness
 % function returns the highest value for the image.
 %
-    fprintf('\nChecking sharpness estimation...');
-    pwd
     stack = tiffread2('data/bcis78-2.stk', 1, 1000);
     
-    sharpness = zeros(1,9);
-    stacksize = size(stack);
+    n = size(stack, 2);
+    sharpness = zeros(1,n);
 
-    for j=1:stacksize(1,2)
+    for j=1:n
         I = stack(j).('data'); 
     
         % measure the sharpness of original image
