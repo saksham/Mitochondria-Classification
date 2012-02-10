@@ -1,8 +1,11 @@
-function testNNCostFunction
-    % Tests the neural network functions
+% ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
+% Machine Learning online class taught by professor Andrew NG. For more
+% details, please visit: http://ml-class.org/
+function testNNCostFunctionCost
+    % Tests the neural network cost function
     clear; close all; clc;
     cd('..');
-
+    
     % Load the training data and parameters
     fprintf('\nLoading data and parameters...')
 
@@ -26,7 +29,6 @@ function testNNCostFunction
     lambda = 0;
     expected = 0.287629;
     actual = nnCostFunction(nn, X, y, lambda);
-    fprintf('\n\tActual: %f \n\tExpected: %f', actual, expected);
     assertElementsAlmostEqual(expected,actual, 'absolute',1e-6);
     
     % Compute cost with regularization
@@ -34,6 +36,5 @@ function testNNCostFunction
     lambda = 1;
     expected = 0.383770;
     actual = nnCostFunction(nn, X, y, lambda);
-    fprintf('\n\tActual: %f \n\tExpected: %f', actual, expected);
     assertElementsAlmostEqual(expected, actual,'absolute', 1e-6);
 end
