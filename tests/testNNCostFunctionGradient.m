@@ -2,12 +2,26 @@
 % Machine Learning online class taught by professor Andrew NG. For more
 % details, please visit: http://ml-class.org/
 function testNNCostFunctionGradient
+    % Load the training data and parameters
+    fprintf('\nLoading data and parameters...')
+    load('data/ml-class_ex4data1.mat');
+    load('data/ml-class_ex4weights.mat');
+
     fprintf('\nChecking numerical gradients for lambda = 0 ...');
-    diff = checkNNGradients(0);
+    lambda = 0;
+    diff = checkNNGradients(lambda);
     assert(diff < 1e-9, 'The unregularized gradient computation is incorrect');
+    
     fprintf('\nChecking numerical gradients for lambda = 1 ...');
+    lambda = 3;
     diff = checkNNGradients(3);
     assert(diff < 1e-9, 'The regularized gradient computation is incorrect');
+    
+    nn = nnCreate(400, 10, 25);
+    nn.theta{1} = Theta1;
+    nn.theta{2} = Theta2;
+    cost  = nnCostFunction(nn, X, y, lambda);
+    assertElementsAlmostEqual(0.576051, cost, 'absolute', 1e-6);
 end
 
 function [diff] = checkNNGradients(lambda)
