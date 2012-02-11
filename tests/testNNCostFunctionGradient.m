@@ -9,6 +9,7 @@ function testNNCostFunctionGradient
 % details, please visit: http://ml-class.org/
 %
 % See also NNCOSTFUNCTION
+%
 
     % Load the training data and parameters
     fprintf('\nLoading data and parameters...')

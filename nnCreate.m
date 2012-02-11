@@ -22,6 +22,7 @@ function [ nn ] = nnCreate(input_dim, output_dim, hidden_layer_sizes)
 %                               in the hidden layers. The length of the
 %                               array indicates the number of hidden
 %                               layers.
+%
 
 nn.hidden_layers_count = numel(hidden_layer_sizes);
 nn.layers_count = 2 + nn.hidden_layers_count;

@@ -4,6 +4,7 @@ function [ theta_vec ] = nnUnroll( nn )
 %   theta matrices into a single 1 dimensional vector
 %
 % See also NNROLL
+%
 
 theta_vec = zeros(nn.theta_total_numel, 1);
 start_index = 1;

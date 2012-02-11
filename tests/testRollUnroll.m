@@ -1,7 +1,8 @@
 function testRollUnroll
 % TESTROLLUNROLL Tests whether or not roll and unroll are inverse
-    
+%
 % See also: NNROLL, NNUNROLL
+%
     nn = nnCreate(3, 4, 2);
     theta_1_original = nn.theta{1};
     theta_2_original = nn.theta{2};

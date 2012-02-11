@@ -7,6 +7,7 @@ function [new_nn] = nnRoll(nn, theta_vec)
 %   rolled-up vectors.
 %
 %   See also NNUNROLL
+%
 
 new_nn = nn;
 start_index = 1;
