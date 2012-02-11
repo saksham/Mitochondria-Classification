@@ -1,7 +1,7 @@
-function [ theta_vec ] = nnActualUnroll( nn )
+function [ theta_vec ] = nnUnroll( nn )
 %NNUNROLL Unrolls the theta matrices into a 1-dimensional vector
-%   NNUNROLL(nn) Given a neural network, it unrolls all the theta matrices
-%   into a single 1 dimensional vector
+%   theta_vec = NNUNROLL(nn) Given a neural network, it unrolls all the 
+%   theta matrices into a single 1 dimensional vector
 %
 % See also NNROLL
 
