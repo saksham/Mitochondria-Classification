@@ -32,8 +32,8 @@ nn.theta_total_numel = 0;
 EPSILON_INIT = 0.12;
 
 for i = 1:(nn.layers_count - 1)
-    rows = nn.layer_sizes(i) + 1;
-    cols = nn.layer_sizes(i + 1);
+    rows = nn.layer_sizes(i + 1);
+    cols = nn.layer_sizes(i) + 1;
     nn.theta{i} = rand(rows, cols) * 2 * EPSILON_INIT - EPSILON_INIT;
     nn.theta_total_numel = nn.theta_total_numel + rows * cols;
 end
