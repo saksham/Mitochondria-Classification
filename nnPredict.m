@@ -3,6 +3,8 @@ function p = nnPredict(nn, X)
 %   p = PREDICT(nn, X) outputs the predicted label of X given the neural
 %   network with trained weights
 %
+% See also: NNTRAIN
+%
 
     % Useful values
     m = size(X, 1);

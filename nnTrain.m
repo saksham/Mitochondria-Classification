@@ -7,7 +7,7 @@ function [ nn_new ] = nnTrain(nn, X, y, lambda, maxIter)
 %   lambda: The regularization constant
 %   maxIter: the number of times the optimization iteration is performed.
 %
-% See also: FMINCG
+% See also: NNPREDICT, FMINCG
 %
 
     % Set optimization options
