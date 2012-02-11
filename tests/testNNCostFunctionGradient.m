@@ -1,7 +1,15 @@
+function testNNCostFunctionGradient
+% TESTNNCOSTFUNCTIONGRADIENT tests gradient calculation of NNCOSTFUNCTION
+%   testNNCostFunctionGradient: This function uses gradient checking as
+%   taught in Stanford Machine Learning lecture to confirm that
+%   NNCOSTFUNCTION correctly computes the gradient of a neural network.
+%
 % ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
 % Machine Learning online class taught by professor Andrew NG. For more
 % details, please visit: http://ml-class.org/
-function testNNCostFunctionGradient
+%
+% See also NNCOSTFUNCTION
+
     % Load the training data and parameters
     fprintf('\nLoading data and parameters...')
     load('data/ml-class_ex4data1.mat');

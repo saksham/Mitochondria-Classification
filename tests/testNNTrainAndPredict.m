@@ -1,10 +1,12 @@
-% ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
-% Machine Learning online class taught by professor Andrew NG. For more
-% details, please visit: http://ml-class.org/
 function testNNTrainAndPredict
 %TESTNNTRAINANDPREDICT Tests NN train and predict functions
 % testNNTrainAndPredict: This function trains and tests neural network for 
 %   digit recognition problem.
+%
+% ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
+% Machine Learning online class taught by professor Andrew NG. For more
+% details, please visit: http://ml-class.org/
+%
     
     % Load the training data and parameters
     fprintf('\nLoading data and parameters...')

@@ -1,5 +1,8 @@
 function testNNCreate
 % TESTNNCREATE: Tests nnCreate function
+%
+% See also NNCREATE
+%
 
     nn = nnCreate(10, 5, [7, 3]);
     assertEqual(2, nn.hidden_layers_count, 'Hidden layers count');

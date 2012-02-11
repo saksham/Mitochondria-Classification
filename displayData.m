@@ -1,11 +1,13 @@
-% ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
-% Machine Learning online class taught by professor Andrew NG. For more
-% details, please visit: http://ml-class.org/
 function [h, display_array] = displayData(X, example_width)
 %DISPLAYDATA Display 2D data in a nice grid
 %   [h, display_array] = DISPLAYDATA(X, example_width) displays 2D data
 %   stored in X in a nice grid. It returns the figure handle h and the 
 %   displayed array if requested.
+%
+% ACKNOWLEDGEMENT: This script is largely based on the Assignment sheet for
+% Machine Learning online class taught by professor Andrew NG. For more
+% details, please visit: http://ml-class.org/
+%
 
 % Set example_width automatically if not passed in
 if ~exist('example_width', 'var') || isempty(example_width) 

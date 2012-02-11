@@ -1,7 +1,15 @@
+function testNNCostFunctionCost
+%TESTNNCOSTFUNCTION tests whether cost computation for the neural network
+%is correct.
+%   testNNCostFunction: This function uses excercise from Stanford Machine
+%   Learning lecture as a test for confirming that the implementation for
+%   cost function of the neural network is correct.
+%
 % ACKNOWLEDGEMENT: This test is largely based on the Assignment sheet for
 % Machine Learning online class taught by professor Andrew NG. For more
 % details, please visit: http://ml-class.org/
-function testNNCostFunctionCost
+%
+
     % Tests the neural network cost function
     clear; close all; clc;
     cd('..');
