@@ -21,7 +21,7 @@ function testNNTrainAndPredict
     % Train the neural network
     fprintf('\nTraining the neural network...');
     nn = nnTrain(nn, X, y, 2, 50);
-    displayData(nn.theta{1}(:, 2:end));
+    % displayData(nn.theta{1}(:, 2:end)); % USEFUL for debugging!
     
     % Make predictions
     fprintf('\nMaking predictions on the input dataset...');
