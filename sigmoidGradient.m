@@ -5,6 +5,7 @@ function g = sigmoidGradient(z)
 %   evaluated at z. This works regardless if z is a matrix or a vector.
 %   In particular, if z is a vector or matrix, it returns the gradient
 %   for each element.
+% See also: SIGMOID
 
 temp = sigmoid(z);
 ones_matrix = ones(size(z));

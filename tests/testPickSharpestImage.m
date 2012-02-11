@@ -6,6 +6,7 @@ function testPickSharpestImage
 % image. So, this test checks whether or not the estimate sharpness
 % function returns the highest value for the image.
 %
+% See also: ESTIMATESHARPNESS
     stack = tiffread2('data/bcis78-2.stk', 1, 1000);
     
     n = size(stack, 2);

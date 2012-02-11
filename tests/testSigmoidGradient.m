@@ -1,5 +1,6 @@
 function testSigmoidGradient
 %TESTSIGMOIDGRADIENT Tests the sigmoidGradient function
+% See also: SIGMOIDGRADIENT
 
 in = [1 -0.5 0 0.5 1];
 out = sigmoidGradient(in);
