@@ -21,7 +21,10 @@ function testNNTrainAndPredict
     % Train the neural network
     fprintf('\nTraining the neural network...');
     nn = nnTrain(nn, X, y, 2, 50);
-    % displayData(nn.theta{1}(:, 2:end)); % USEFUL for debugging!
+    
+    % It might be useful to visualize the hidden layers while debugging.
+    % Please comment out after debugging.
+    % displayData(nn.theta{1}(:, 2:end)); 
     
     % Make predictions
     fprintf('\nMaking predictions on the input dataset...');
