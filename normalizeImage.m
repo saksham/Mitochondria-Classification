@@ -1,4 +1,7 @@
-function [ normalized ] = normalize_image( I )
+function [ normalized ] = normalizeImage( I )
+%NORMALIZEIMAGE normalizes the image to 0-255 range
+% [normalized] = normalizeImage(I)
+%
 
 min_value = double(min(min(I)));
 max_value = double(max(max(I)));

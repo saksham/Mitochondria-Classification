@@ -15,7 +15,7 @@ function testPickSharpestImage
         I = stack(j).('data'); 
     
         % measure the sharpness of original image
-        sharpness(1,j) = estimate_sharpness(I);
+        sharpness(1,j) = estimateSharpness(I);
         %fprintf('\nSharpness of image %f:%f', ...
         %    num2str(j), num2str(sharpness(1,j)));
     end
