@@ -11,7 +11,7 @@ addpath(str);
 X = [0 0 ; 1 0 ; 0 1];
 y = [-1 ; 1 ; 1];
 
-SV = svmGetVectorsNoKernel(X,y,0);
+SV = svmGetVectorsNoKernel(X,y,1);
 
 assertEqual(SV, [0 0 ; 1 0 ; 0 1]);
 

@@ -3,6 +3,7 @@ function [ SV ] = svmGetVectorsNoKernel( X , y , is_plot)
 %   Detailed explanation goes here
 
 sample_number = length(y);
+sample_dimension = size(X);
 H = zeros(sample_number,sample_number);
 C = 150;
 % tolerance for Support Vector Detection
@@ -24,16 +25,18 @@ b = 0;                          % equal to 0
 
 % quadratic optimization
 [alpha] = quadprog(H, f, [], [], A, b, vlb, vub);
-
-if is_plot
-    % compute w
-    w = zeros(2,1);
-    support_vector_counter = 0;
-    for i = 1 : sample_number
+for i = 1 : sample_number
         if alpha(i) < epsilon
             alpha(i) = 0;
             continue;
         end
+end
+
+if is_plot
+    % compute w
+    w = zeros(sample_dimension(2),1);
+    support_vector_counter = 0;
+    for i = 1 : sample_number
         w = w + y(i)*alpha(i)*X(i,:)';
         support_vector_counter = support_vector_counter + 1;
     end
