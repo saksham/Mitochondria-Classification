@@ -31,7 +31,6 @@ for i=1:sample_number
 end
 
 % parameters for the optimization problem
-
 % negative sign for first derivative
 f = -1.*ones(sample_number,1);
 
