@@ -5,7 +5,7 @@ function [ SV ] = svmGetVectorsNoKernel( X , y , is_plot)
 sample_number = length(y);
 sample_dimension = size(X);
 H = zeros(sample_number,sample_number);
-C = 150;
+C = 100;
 % tolerance for Support Vector Detection
 epsilon = C*1e-6;
 
@@ -26,10 +26,10 @@ b = 0;                          % equal to 0
 % quadratic optimization
 [alpha] = quadprog(H, f, [], [], A, b, vlb, vub);
 for i = 1 : sample_number
-        if alpha(i) < epsilon
-            alpha(i) = 0;
-            continue;
-        end
+    if alpha(i) < epsilon
+        alpha(i) = 0;
+        continue;
+    end
 end
 
 if is_plot
@@ -38,6 +38,9 @@ if is_plot
     support_vector_counter = 0;
     for i = 1 : sample_number
         w = w + y(i)*alpha(i)*X(i,:)';
+        if alpha(i) == 0
+            continue;
+        end
         support_vector_counter = support_vector_counter + 1;
     end
     % euklidian norm of w
@@ -63,19 +66,44 @@ if is_plot
         sum1 = sum1 + (y(i) - sum2);
     end
     b = (sum1 / support_vector_counter) / w_norm;
+    %
+    %     % plot
+    %     hold on;
+    %     axis([0 5 0 5]);
+    %     x1_axes = 0:0.01:4;
+    %     x2_axes = (-w(1).*x1_axes-b)./w(2);
+    %     plot(x1_axes,x2_axes);
+    %     for i = 1 : sample_number
+    %         if y(i) == 1
+    %             scatter(X(i,1),X(i,2),'X','red');
+    %         else
+    %             scatter(X(i,1),X(i,2),'O','green');
+    %         end
+    %     end
+    border_matrix = NaN;
     
-    % plot
-    hold on;
-    axis([0 5 0 5]);
-    x1_axes = 0:0.01:4;
-    x2_axes = (-w(1).*x1_axes-b)./w(2);
-    plot(x1_axes,x2_axes);
-    for i = 1 : sample_number
-        if y(i) == 1
-            scatter(X(i,1),X(i,2),'X','red');
-        else
-            scatter(X(i,1),X(i,2),'O','green');
+    x1_axes = 0:0.01:1;
+    x2_axes = 0:0.01:1;
+    
+    for r = 1 : length(x1_axes)
+        for s = 1 : length(x2_axes)
+            v = [x1_axes(r) x2_axes(s)]';
+            value = w'*[x1_axes(r) x2_axes(s)]' + b;
+            if value > -0.001 && value < 0.001
+                if isnan(border_matrix)
+                    border_matrix = [x1_axes(r) x2_axes(s)];
+                else
+                    border_matrix = [border_matrix ; [x1_axes(r) x2_axes(s)]];
+                end
+            end
         end
+    end
+    
+    hold on;
+    axis([0 1 0 1]);
+    border_size = size(border_matrix);
+    for k = 1 : border_size(1)
+        scatter(border_matrix(k,1),border_matrix(k,2),'.','black');
     end
     
 end
@@ -94,4 +122,3 @@ for i = 1 : sample_number
 end
 
 end
-
