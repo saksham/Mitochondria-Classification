@@ -15,21 +15,23 @@ addpath(str);
 
 % X = [0 0 ; 1 0 ; 0.5 -0.5 ; 1 1 ; 0.9 0.9 ; 0.3 0.3];
 % y = [-1 ; -1 ; -1 ; 1 ; 1 ; 1];
-% 
+%
 % % use this to generate the supportvectors of the original data set
 % [SV_X , SV_y] = svmGetVectorsKernel(X,y,1,10,'gauss',0.2,0);
-% 
+%
 % % use this to classify new data only using the support vectors
 % new_y = svmClassifier(SV_X,SV_y,[-0.2 -0.2 ; -0.1 0.5],10,'gauss',0.2,0);
-% 
+%
 % assertEqual(new_y , [-1 ; 1]);
 
 load('data/ml-class_ex4data1.mat');
-C = 150;
-features = 12;
 
-% do a little pPCA to reduce the amount of parameters from 400 to only 10
-X = pPCA(X,features);
+C = 150;
+feature_accuracy = 0.7;
+sigma = 1;
+
+% do a little PCA to reduce the amount of parameters from 400 to only 10
+[X , features] = PCA(X,feature_accuracy);
 
 % multi class is too difficult ;-)
 % thats only predict for '3' for testing
@@ -51,7 +53,8 @@ X_next(226:475,:) = X(1501:1750,:); %3
 y_next(1:225) = -1;
 y_next(226:475) = 1;
 
-[SV_X , SV_y] = svmGetVectorsKernel(X_next,y_next,0,C,'gauss',1,0);
+
+[SV_X , SV_y , alpha] = svmGetVectorsKernel(X_next,y_next,0,C,'gauss',sigma,0);
 
 % test on 475 samples
 % 250 - not 3
@@ -71,7 +74,7 @@ X_next(226:475,:) = X(1751:2000,:); %3
 y_next(1:225) = -1;
 y_next(226:475) = 1;
 
-pred = svmClassifier(SV_X,SV_y,X_next,C,'gauss',1,0);
+pred = svmClassifier(SV_X,SV_y,alpha,X_next,'gauss',sigma,0);
 
 trainingSetAccuracy = mean(double(pred == y_next)) * 100;
 assert(trainingSetAccuracy > 90, 'Training set accuracy should be ~90%');

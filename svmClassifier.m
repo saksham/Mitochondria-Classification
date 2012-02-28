@@ -1,4 +1,4 @@
-function [ new_y ] = svmClassifier( SV_X , SV_y , new_X , softness , kernel_type_string , arg1 , arg2)
+function [ new_y ] = svmClassifier( SV_X , SV_y , alpha , new_X , kernel_type_string , arg1 , arg2)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -18,46 +18,8 @@ switch kernel_type_string
 end
 
 sample_number = length(SV_y);
-C = softness;
-% tolerance for support vector detection
-epsilon = C*1e-6;
+support_vector_counter = sample_number;
 
-% construct the hessian
-H = zeros(sample_number,sample_number);
-for i=1:sample_number
-    for j=1:sample_number
-        H(i,j) = SV_y(i)*SV_y(j)*getKernelValue(SV_X(i,:),SV_X(j,:));
-    end
-end
-
-% parameters for the optimization problem
-
-% negative sign for first derivative
-f = -1.*ones(sample_number,1);
-
-% 0 <= alpha <= C
-% lower bound
-vlb = zeros(sample_number,1);
-% upper bound
-vub = C*ones(sample_number,1);
-
-% sum(alpha * y) = 0
-A = SV_y';
-b = 0;
-
-% quadratic optimization
-[alpha] = quadprog(H, f, [], [], A, b, vlb, vub);
-
-support_vector_counter = 0;
-for i = 1 : sample_number
-    if alpha(i) < epsilon
-        alpha(i) = 0;
-        continue;
-    end
-    support_vector_counter = support_vector_counter + 1;
-end
-
-% compute b from support vectors
 sum1 = 0;
 for i = 1 : sample_number
     if alpha(i) == 0

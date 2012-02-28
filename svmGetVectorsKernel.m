@@ -1,4 +1,4 @@
-function [ SV_X , SV_y ] = svmGetVectorsNoKernel( X , y , is_plot , softness , kernel_type_string , arg1 , arg2)
+function [ SV_X , SV_y , alpha_return ] = svmGetVectorsKernel( X , y , is_plot , softness , kernel_type_string , arg1 , arg2)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -113,9 +113,15 @@ end
 % find support vectors in data set
 SV_X = NaN;
 SV_y = NaN;
+alpha_return = NaN;
 for i = 1 : sample_number
     if alpha(i) == 0
         continue;
+    end
+    if isnan(alpha_return)
+        alpha_return = alpha(i);
+    else
+        alpha_return = [alpha_return ; alpha(i)];
     end
     if isnan(SV_X)
         SV_X = X(i,:);

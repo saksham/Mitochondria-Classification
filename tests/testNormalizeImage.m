@@ -32,6 +32,8 @@ I = stack(i).('data');
 eight = normalizeImage(I);
 eight_mat = normalizeImageMat(I);
 
+imshow(eight_mat);
+
 %Test for equality
 assertEqual(eight, eight_mat);
 

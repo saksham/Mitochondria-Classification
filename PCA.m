@@ -1,4 +1,4 @@
-function [signals,PC,V] = pPCA(data , limit)
+function [signals,i] = PCA(data , accuracy)
 % PCA1: Perform PCA using covariance. 
 % data - MxN matrix of input data
 % (M dimensions, N trials)
@@ -17,10 +17,18 @@ covariance = cov(data);
 V = diag(V);
 % sort the variances in decreasing order 
 [junk, rindices] = sort(-1*V);
-V = V(rindices);
+sum_all = sum(V);
+sum_best = 0.0;
+i = 0;
+while (sum_best / -sum_all) < accuracy
+    i = i+1;
+    sum_best = sum_best + junk(i);
+end
+    
+%V = V(rindices);
 PC = PC(:,rindices);
 % only use the 'best' vectors
-PC = PC(:,1:limit);
+PC = PC(:,1:i);
 % project the original data set 
 signals = data * PC;
 end
