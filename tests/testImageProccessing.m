@@ -39,18 +39,8 @@ Segout = I;
 Segout(BWoutline) = 255;
 %figure, imshow(Segout), title('outlined original image');
 
-image_size = size(BWoutline);
-
-row = 1;
-for i = 1 : image_size(2)
-    for j = 1 : image_size(1)
-        if BWoutline(j,i) == 1
-            M(row,:) = [i,j];
-            row = row + 1;
-        end
-    end
-    disp(num2str(i));
-end
+[r,c,v] = find(BWoutline==1);
+M = [c r];
 
 [PC,V] = eig(cov(M));
 
