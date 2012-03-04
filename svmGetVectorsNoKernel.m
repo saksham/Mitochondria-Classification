@@ -1,4 +1,4 @@
-function [ SV ] = svmGetVectorsNoKernel( X , y , is_plot)
+function [ SV , error ] = svmGetVectorsNoKernel( X , y , is_plot)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -66,24 +66,24 @@ if is_plot
         sum1 = sum1 + (y(i) - sum2);
     end
     b = (sum1 / support_vector_counter) / w_norm;
-    %
-    %     % plot
-    %     hold on;
-    %     axis([0 5 0 5]);
-    %     x1_axes = 0:0.01:4;
-    %     x2_axes = (-w(1).*x1_axes-b)./w(2);
-    %     plot(x1_axes,x2_axes);
-    %     for i = 1 : sample_number
-    %         if y(i) == 1
-    %             scatter(X(i,1),X(i,2),'X','red');
-    %         else
-    %             scatter(X(i,1),X(i,2),'O','green');
-    %         end
-    %     end
+    
+        % plot
+        hold on;
+        axis([0 5 0 5]);
+        x1_axes = 0:0.1:10;
+        x2_axes = (-w(1).*x1_axes-b)./w(2);
+        plot(x1_axes,x2_axes);
+        for i = 1 : sample_number
+            if y(i) == 1
+                scatter(X(i,1),X(i,2),'X','red');
+            else
+                scatter(X(i,1),X(i,2),'O','green');
+            end
+        end
     border_matrix = NaN;
     
-    x1_axes = 0:0.01:1;
-    x2_axes = 0:0.01:1;
+    x1_axes = 0:0.1:10;
+    x2_axes = 0:0.1:10;
     
     for r = 1 : length(x1_axes)
         for s = 1 : length(x2_axes)
@@ -100,11 +100,11 @@ if is_plot
     end
     
     hold on;
-    axis([0 1 0 1]);
-    border_size = size(border_matrix);
-    for k = 1 : border_size(1)
-        scatter(border_matrix(k,1),border_matrix(k,2),'.','black');
-    end
+    axis([0 1 0 10]);
+%     border_size = size(border_matrix);
+%     for k = 1 : border_size(1)
+%         scatter(border_matrix(k,1),border_matrix(k,2),'.','black');
+%     end
     
 end
 
@@ -120,5 +120,7 @@ for i = 1 : sample_number
         SV = [SV ; X(i,:)];
     end
 end
+
+error = sum(alpha);
 
 end
