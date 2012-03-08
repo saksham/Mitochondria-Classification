@@ -56,20 +56,100 @@ for k = 1 : length(y_vec)
     R3 = sum(R(:,2))/n;
     
     features(k,:) = [R2,R3];
-%    y_vec_fast(k) = y_vec(fast(k));
+    %    y_vec_fast(k) = y_vec(fast(k));
+    %[COV , MU] = MAP( COV , MU , k-1 , [R2,R3] , y_vec(k) , [-1 , 1]);
 end
-
 
 max_x1 = max(features(:,1));
 max_x2 = max(features(:,2));
 features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
-%[SV , error] = svmGetVectorsNoKernel(features,y_vec_fast,1);
-[SV , error] = svmGetVectorsNoKernel(features,y_vec,1);
-overall_error = overall_error + error;
 
-disp(['ERROR(overall_error): ' num2str(overall_error)]);
+COV = zeros(2,2,2);
+COV(1,1,1) = 0.01;
+COV(2,2,1) = 0.01;
+COV(1,1,2) = 0.01;
+COV(2,2,2) = 0.01;
+MU = zeros(2,2);
+[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+hold on;
+[x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
+contour(x,y,z,1,'green');
+[x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
+contour(x,y,z,1,'red');
+
+COV = zeros(2,2,2);
+COV(1,1,1) = 0.01;
+COV(2,2,1) = 0.01;
+COV(1,1,2) = 0.01;
+COV(2,2,2) = 0.01;
+MU = zeros(2,2);
+[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [1 1] , [1 1]);
+[x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
+contour(x,y,z,1,'green');
+[x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
+contour(x,y,z,1,'red');
+
+COV = zeros(2,2,2);
+COV(1,1,1) = 0.01;
+COV(2,2,1) = 0.01;
+COV(1,1,2) = 0.01;
+COV(2,2,2) = 0.01;
+MU = zeros(2,2);
+[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [0.5 0.5] , [1 1]);
+[x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
+contour(x,y,z,1,'green');
+[x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
+contour(x,y,z,1,'red');
+
+COV = zeros(2,2,2);
+COV(1,1,1) = 0.01;
+COV(2,2,1) = 0.01;
+COV(1,1,2) = 0.01;
+COV(2,2,2) = 0.01;
+MU = zeros(2,2);
+[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [1 1] , [0 0]);
+[x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
+contour(x,y,z,1,'green');
+[x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
+contour(x,y,z,1,'red');
+
+for i = 1 : length(y_vec)
+    if y_vec(i) == 1
+        scatter(features(i,1),features(i,2),'X','red');
+    else
+        scatter(features(i,1),features(i,2),'O','green');
+    end
+end
+axis([0 1 0 1]);
+
+
+
+%[SV , error] = svmGetVectorsNoKernel(features,y_vec_fast,1);
+%[SV , error] = svmGetVectorsNoKernel(features,y_vec,1);
+%overall_error = overall_error + error;
+
+%disp(['ERROR(overall_error): ' num2str(overall_error)]);
+
 
 end
 
+function [x,y,z] = evalF(c,mu,sigma)
+
+rng = 0:.01:1;
+[x,y] = meshgrid(rng,rng);
+z = zeros(numel(rng),numel(rng));
+inv_sigma = inv(sigma);
+
+i=1;
+for x1 = rng
+    j=1;
+    for x2 = rng
+        z(j,i) = c*exp( -0.5* ( ([x1 x2]-mu)*inv_sigma*([x1 x2]-mu)' ) );
+        j=j+1;
+    end
+    i=i+1;
+end
+
+end
