@@ -11,7 +11,7 @@ y_vec = (y_vec + 1) / 2;
 
 X = [];
 y = [];
-for i = 1:size(images, 1)
+for i = 1:size(images, 2)
     I = images{i};
     blobs = blobVector(I, 0.84, 0.11);
     x_i = featureExtractionBoundaries(blobs);
