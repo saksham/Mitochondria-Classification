@@ -2,15 +2,15 @@ function [ return_boundaries ] = blobVector( I , black_percentage , white_percen
 %BLOBVECTOR Summary of this function goes here
 %   Detailed explanation goes here
 
+% figure; imshow(I);
+
 % reduce noise
 I = wiener2(I);
 
 % generate histogram
-histo_vec = zeros(256,1);
-for j = 0 : length(histo_vec)-1
-    [r,c,v] = find(I==j);
-    histo_vec(j+1) = length(c);
-end
+data = I(:);
+histo_vec = histc(data,[0:255]);
+%figure; hist(double(Vektor),256);
 
 % calculate bounds for image adjust
 done_black = 0;
@@ -37,9 +37,16 @@ while done_white < todo_white
 end
 lower_bound = counter_black/256;
 upper_bound = (length(histo_vec)-counter_white)/256;
-pout_imadjust = imadjust(I,[lower_bound;upper_bound],[0;1],1.0);
+pout_imadjust = imadjust(I,[lower_bound;upper_bound],[0;1]);
+
+%figure; imshow(pout_imadjust);
+
+% Vektor = pout_imadjust(:);
+% figure; hist(double(pout_imadjust),256);
 
 % generate a binary image
+%disp(['black: ' num2str(counter_black) ' (' num2str(lower_bound) ') / white: ' ...
+%    num2str((length(histo_vec)-counter_white)) ' (' num2str(upper_bound) ')']);
 BW = im2bw(pout_imadjust,0.5);
 
 % generate boundaries
@@ -54,6 +61,12 @@ for k=1:length(boundaries)
         return_boundaries{counter} = b;
     end
 end
+
+% imshow(BW);
+% hold on;
+% for i = 1 : length(return_boundaries)
+%     plot(return_boundaries{i}(:,2),return_boundaries{i}(:,1),'g','LineWidth',2);
+% end
 
 end
 

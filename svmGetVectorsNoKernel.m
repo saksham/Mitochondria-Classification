@@ -5,7 +5,7 @@ function [ SV , error ] = svmGetVectorsNoKernel( X , y , is_plot)
 sample_number = length(y);
 sample_dimension = size(X);
 H = zeros(sample_number,sample_number);
-C = 100;
+C = 1000;
 % tolerance for Support Vector Detection
 epsilon = C*1e-6;
 
@@ -24,6 +24,7 @@ A = y';                         % equality constraint
 b = 0;                          % equal to 0
 
 % quadratic optimization
+warning off;
 [alpha] = quadprog(H, f, [], [], A, b, vlb, vub);
 for i = 1 : sample_number
     if alpha(i) < epsilon
@@ -69,7 +70,7 @@ if is_plot
     
         % plot
         hold on;
-        axis([0 5 0 5]);
+        axis([0 1 0 1]);
         x1_axes = 0:0.1:10;
         x2_axes = (-w(1).*x1_axes-b)./w(2);
         plot(x1_axes,x2_axes);
@@ -99,8 +100,8 @@ if is_plot
         end
     end
     
-    hold on;
-    axis([0 1 0 10]);
+    %hold on;
+    %axis([0 1 0 10]);
 %     border_size = size(border_matrix);
 %     for k = 1 : border_size(1)
 %         scatter(border_matrix(k,1),border_matrix(k,2),'.','black');
