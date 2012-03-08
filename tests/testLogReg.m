@@ -13,7 +13,7 @@ options = optimset('GradObj', 'on', 'MaxIter', 400);
 	fminunc(@(t)(costFunctionReg(t, X, y, lambda)), initial_theta, options);
 
 % Compute accuracy on our training set
-p = predict(theta, X);
+p = logRegPredict(theta, X);
 accuracy = mean(double(p == y)) * 100;
 assert(accuracy > 90.0);
 
