@@ -15,8 +15,8 @@ c = 1;
 
 oldDistances = zeros(c,n);
 
-%figure;
-%hold on;
+% figure;
+% hold on;
 
 %bestimme U
 for i = 1:c
