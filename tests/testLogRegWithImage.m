@@ -1,9 +1,15 @@
 function testLogRegWithImage
 
+%Paths
+str = strrep(pwd, '/tests', '');
+addpath(str);
+str = strrep(pwd, '/tests', '/xunit');
+addpath(str);
+
 % Read the values for input and labels
-images_struct = load('data/images.mat');
+images_struct = load('../data/images.mat');
 images = images_struct(1).('images');
-y_vec_struct = load('data/y_vec.mat');
+y_vec_struct = load('../data/y_vec.mat');
 y_vec = y_vec_struct(1).('y_vec');
 
 % Change the labels to {0, 1} instead of {-1, 1}

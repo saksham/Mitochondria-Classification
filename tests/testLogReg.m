@@ -1,6 +1,6 @@
 function testLogReg
 
-data = load('data/ex2data1.txt');
+data = load('../data/ex2data1.txt');
 X = data(:, [1, 2]); y = data(:, 3);
 X = [ones(size(X, 1), 1) X];
 
