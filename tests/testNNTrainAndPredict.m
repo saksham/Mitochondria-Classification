@@ -10,7 +10,7 @@ function testNNTrainAndPredict
     
     % Load the training data and parameters
     fprintf('\nLoading data and parameters...')
-    load('data/ml-class_ex4data1.mat');
+    load('../data/ml-class_ex4data1.mat');
 
     % Create a neural network
     input_layer_size = 400;     % 20x20 imput images of digits
