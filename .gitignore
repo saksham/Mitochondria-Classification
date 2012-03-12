@@ -36,3 +36,11 @@ Thumbs.db
 # Backup files #
 ################
 *~
+
+# MATLAB #
+##########
+.asv
+
+# LATEX #
+#########
+.aux
