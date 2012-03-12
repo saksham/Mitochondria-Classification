@@ -7,9 +7,9 @@ str = strrep(pwd, '/tests', '/xunit');
 addpath(str);
 
 % Read the values for input and labels
-images_struct = load('../data/images.mat');
+images_struct = load('data/images.mat');
 images = images_struct(1).('images');
-y_vec_struct = load('../data/y_vec.mat');
+y_vec_struct = load('data/y_vec.mat');
 y_vec = y_vec_struct(1).('y_vec');
 
 
@@ -30,14 +30,14 @@ lambda = 0;
 % Set options and optimize
 options = optimset('GradObj', 'on', 'MaxIter', 500);
 [theta, J, exit_flag] = ...
-	fminunc(@(t)(logRegCostFunction(t, X, y, lambda)), initial_theta, options);
+	fminunc(@(t)(logRegCostFunction(X, y, t, lambda)), initial_theta, options);
 
 % Plot decision boundary
-plot2dDecisionBoundary(theta, X, y);
+plot2dLinearDecisionBoundary(X, y, theta);
 
 % Compute accuracy on our training set
-p = logRegPredict(theta, X);
-accuracy = mean(double(p == y)) * 100
+p = logRegPredict(X, theta);
+accuracy = mean(double(p == y)) * 100;
 assert(accuracy > 80.0);
 
 end
