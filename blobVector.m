@@ -10,7 +10,8 @@ I = wiener2(I);
 % generate histogram
 data = I(:);
 histo_vec = histc(data,[0:255]);
-%figure; hist(double(Vektor),256);
+%figure; hist(double(data),[0:255]);
+%axis([0 255 0 max(histo_vec)+100]);
 
 % calculate bounds for image adjust
 done_black = 0;

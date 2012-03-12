@@ -23,5 +23,7 @@ end
 B = imresize(B,[20 20]);
 B = im2bw(B,0.5);
 
+figure;  imshow(B);hold off;
+
 end
 
