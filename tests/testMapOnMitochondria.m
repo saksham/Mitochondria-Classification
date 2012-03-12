@@ -41,32 +41,22 @@ max_x2 = max(features(:,2));
 features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
-
 COV = zeros(2,2,2);
 MU = zeros(2,2);
 [COV , MU] = MAP( COV , MU , length(y_vec) , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
 
 y_pred = mapPredict(COV , MU , [-1 , 1] , features);
 
+% Plot
+predict = @(input)mapPredict(COV , MU , [-1 , 1], input);
+visualize2dNonLinearBoundary(features, y_vec, 1000, @(input)predict(input))
 hold on;
-for i = 1 : length(y_pred)
-    if y_pred(i) == y_vec(i)
-        continue;
-    end
-    scatter(features(i,1),features(i,2),'+','blue');
-end
+grey = [0.4,0.4,0.4];
 [x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
-contour(x,y,z,1,'green');
+contour(x,y,z,1,'Color',grey);
 [x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
-contour(x,y,z,1,'red');
-        for i = 1 : length(y_vec)
-    if y_vec(i) == 1
-        scatter(features(i,1),features(i,2),'X','red');
-    else
-        scatter(features(i,1),features(i,2),'O','green');
-    end
-end
-axis([0 1 0 1]);
+contour(x,y,z,1,'Color',grey);
+hold off;
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
 
