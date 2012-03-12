@@ -38,10 +38,14 @@ max_x2 = max(features(:,2));
 features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
-
 [SV_X , SV_y , alpha] = svmNonLinear(features, y_vec , 1000,'gauss',0.2,0);
 
 y_pred = svmNonLinearPredict(SV_X , SV_y , alpha, features, 'gauss',0.2,0);
+
+% Plot
+predict = @(features)svmNonLinearPredict(SV_X , SV_y , alpha, features, 'gauss',0.2,0);
+visualize2dNonLinearBoundary(features, y_pred, @(features)predict([0:0.1:1]))
+
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
 
