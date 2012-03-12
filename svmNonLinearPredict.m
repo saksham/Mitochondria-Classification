@@ -1,4 +1,4 @@
-function [ new_y ] = svmClassifier( SV_X , SV_y , alpha , new_X , kernel_type_string , arg1 , arg2)
+function [ new_y ] = svmNonLinearPredict( SV_X , SV_y , alpha , new_X , kernel_type_string , arg1 , arg2)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
 
