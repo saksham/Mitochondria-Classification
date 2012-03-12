@@ -5,7 +5,7 @@ function [ SV , error ] = svmGetVectorsNoKernel( X , y , is_plot)
 sample_number = length(y);
 sample_dimension = size(X);
 H = zeros(sample_number,sample_number);
-C = 1000;
+C = 100;
 % tolerance for Support Vector Detection
 epsilon = C*1e-6;
 

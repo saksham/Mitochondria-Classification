@@ -12,6 +12,8 @@ options = optimset('GradObj', 'on', 'MaxIter', 400);
 [theta, J, exit_flag] = ...
 	fminunc(@(t)(logRegCostFunction(t, X, y, lambda)), initial_theta, options);
 
+plot2dDecisionBoundary(theta, X, y);
+
 % Compute accuracy on our training set
 p = logRegPredict(theta, X);
 accuracy = mean(double(p == y)) * 100

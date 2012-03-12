@@ -28,5 +28,12 @@ for i = 1 : n
     features(i,:) = [F1,F2];
 end
 
+max_x1 = max(features(:,1));
+max_x2 = max(features(:,2));
+min_x1 = min(features(:,1));
+min_x2 = min(features(:,2));
+features(:,1) = (features(:,1)-min_x1)./(max_x1-min_x1);
+features(:,2) = 1-(features(:,2)-min_x2)./(max_x2-min_x2);
+
 end
 

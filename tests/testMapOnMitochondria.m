@@ -22,17 +22,17 @@ images = images_struct(1).('images');
 overall_error = 0;
 
 %faster
-fast = [1 2 3 4 5 6 7 8 9 10 21 22 23 24 25 26 27 28 29 30];
-y_vec_fast = zeros(length(fast),1);
-images_fast = cell(1);
-
-for k = 1 : length(fast)
-    images_fast{k} = images{fast(k)};
-    y_vec_fast(k) = y_vec(fast(k));
-end
-
-images = images_fast;
-y_vec = y_vec_fast;
+% fast = [1 2 3 4 5 6 7 8 9 10 21 22 23 24 25 26 27 28 29 30];
+% y_vec_fast = zeros(length(fast),1);
+% images_fast = cell(1);
+% 
+% for k = 1 : length(fast)
+%     images_fast{k} = images{fast(k)};
+%     y_vec_fast(k) = y_vec(fast(k));
+% end
+% 
+% images = images_fast;
+% y_vec = y_vec_fast;
 
 features = imageFeatureExtraction(images, black_percentage, white_percentage);
 
@@ -44,7 +44,7 @@ features(:,2) = features(:,2)./max_x2;
 
 COV = zeros(2,2,2);
 MU = zeros(2,2);
-[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+[COV , MU] = MAP( COV , MU , length(y_vec) , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
 
 y_pred = mapPredict(COV , MU , [-1 , 1] , features);
 

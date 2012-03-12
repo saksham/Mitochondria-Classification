@@ -11,7 +11,7 @@ addpath(str);
 black_percentage = x(1);
 white_percentage = x(2);
 if (black_percentage + white_percentage) > 1
-    overall_error = 100;
+    overall_error = 9999;
     disp(['ERROR(constraint): ' num2str(overall_error)]);
     return;
 end
@@ -43,7 +43,7 @@ for k = 1 : length(y_vec)
     if isnan(cov_b)
         %overall_error = overall_error + 1000;
         %disp(['ERROR(image without blobs): +1000']);
-        overall_error = 100;
+        overall_error = 9999;
         disp(['ERROR(image without blobs): ' num2str(overall_error)]);
         return;
     end
@@ -66,33 +66,33 @@ features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
 
-COV = zeros(2,2,2);
-COV(1,1,1) = 0.01;
-COV(2,2,1) = 0.01;
-COV(1,1,2) = 0.01;
-COV(2,2,2) = 0.01;
-MU = zeros(2,2);
-[COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+% COV = zeros(2,2,2);
+% COV(1,1,1) = 0.01;
+% COV(2,2,1) = 0.01;
+% COV(1,1,2) = 0.01;
+% COV(2,2,2) = 0.01;
+% MU = zeros(2,2);
+% [COV , MU] = MAP( COV , MU , k-1 , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+% 
+% y_pred = mapPredict(COV , MU , [-1 , 1] , features);
 
-y_pred = mapPredict(COV , MU , [-1 , 1] , features);
 
-
-hold on;
-for i = 1 : length(y_pred)
-    if y_pred(i) == y_vec(i)
-        continue;
-    end
-    scatter(features(i,1),features(i,2),'+','blue');
-end
-
-trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
-
-overall_error = 100 - trainingSetAccuracy;
-
-[x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
-contour(x,y,z,1,'green');
-[x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
-contour(x,y,z,1,'red');
+% hold on;
+% for i = 1 : length(y_pred)
+%     if y_pred(i) == y_vec(i)
+%         continue;
+%     end
+%     scatter(features(i,1),features(i,2),'+','blue');
+% end
+% 
+% trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
+% 
+% overall_error = 100 - trainingSetAccuracy;
+% 
+% [x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
+% contour(x,y,z,1,'green');
+% [x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
+% contour(x,y,z,1,'red');
 
 
 % 
@@ -132,19 +132,19 @@ contour(x,y,z,1,'red');
 % [x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
 % contour(x,y,z,1,'red');
 
-for i = 1 : length(y_vec)
-    if y_vec(i) == 1
-        scatter(features(i,1),features(i,2),'X','red');
-    else
-        scatter(features(i,1),features(i,2),'O','green');
-    end
-end
-axis([0 1 0 1]);
+% for i = 1 : length(y_vec)
+%     if y_vec(i) == 1
+%         scatter(features(i,1),features(i,2),'X','red');
+%     else
+%         scatter(features(i,1),features(i,2),'O','green');
+%     end
+% end
+% axis([0 1 0 1]);
 
 
 
-%[SV , error] = svmGetVectorsNoKernel(features,y_vec_fast,1);
-%[SV , error] = svmGetVectorsNoKernel(features,y_vec,1);
+%[SV , overall_error] = svmGetVectorsNoKernel(features,y_vec_fast,1);
+[SV , overall_error] = svmGetVectorsNoKernel(features,y_vec,0);
 %overall_error = overall_error + error;
 
 disp(['ERROR(overall_error): ' num2str(overall_error)]);

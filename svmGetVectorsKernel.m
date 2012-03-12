@@ -75,8 +75,8 @@ if is_plot
     b = (sum1 / support_vector_counter);
     
     % start plotting
-    x1_axes = -1:0.1:1;
-    x2_axes = -1:0.1:1;
+    x1_axes = -1:0.05:1;
+    x2_axes = -1:0.05:1;
     
     hold on;
     axis([-1 1 -1 1]);

@@ -14,7 +14,8 @@ hold on
 
 if size(X, 2) <= 3
     % Only need 2 points to define a line, so choose two endpoints
-    plot_x = [min(X(:,2))-2,  max(X(:,2))+2];
+    %plot_x = [min(X(:,2)),  max(X(:,2))];
+    plot_x = [0,  1];
 
     % Calculate the decision boundary line
     plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1));
@@ -22,8 +23,14 @@ if size(X, 2) <= 3
     % Plot, and adjust axes for better viewing
     plot(plot_x, plot_y)
     
+<<<<<<< HEAD
     legend('Fragmented', 'Tubular', 'Decision Boundary')
     axis([30, 100, 30, 100])
+=======
+    axis([0 1 0 1]);
+    
+    legend('Fragmented', 'Tubular', 'Decision Boundary','Location','NorthOutside','Orientation','horizontal')
+>>>>>>> changes everywhere ;-)
 else
     % Here is the grid range
     u = linspace(-1, 1.5, 50);
@@ -42,6 +49,8 @@ else
     % Notice you need to specify the range [0, 0]
     contour(u, v, z, [0, 0], 'LineWidth', 2)
 end
+xlabel('\sigma_r','fontsize',14);
+ylabel('circularity','fontsize',14);
 hold off
 
 end

@@ -41,6 +41,8 @@ features(:,2) = features(:,2)./max_x2;
 
 [W , b] = svmLinear(features,y_vec,1000);
 
+plot2dDecisionBoundary([b ; W], [ones(length(y_vec),1) features], y_vec);
+
 y_pred = svmLinearPredict(W, b, features);
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
