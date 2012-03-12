@@ -7,13 +7,9 @@ function plot2dDataWithLabels(X, y)
 % Create New Figure
 figure; hold on;
 
-<<<<<<< HEAD
-pos = find(y == 1); neg = find(y == 0);
-
-=======
 labels = [min(y), max(y)];
 pos = find(y == labels(2)); neg = find(y == labels(1));
->>>>>>> changes everywhere ;-)
+
 plot(X(pos, 1), X(pos, 2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
 plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 

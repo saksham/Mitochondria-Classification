@@ -39,8 +39,8 @@ Thumbs.db
 
 # MATLAB #
 ##########
-.asv
+*.asv
 
 # LATEX #
 #########
-.aux
+*.aux
