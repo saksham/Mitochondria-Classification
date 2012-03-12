@@ -12,5 +12,5 @@ end
 
 
 function output = withinTheCircle(x1, x2, radius)
-    output = x1 .^ 2 + x2 .^ 2 <= radius;
+    output = x1 .^ 2 + x2 .^ 2 <= radius .^ 2;
 end
