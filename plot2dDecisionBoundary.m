@@ -22,7 +22,7 @@ if size(X, 2) <= 3
     % Plot, and adjust axes for better viewing
     plot(plot_x, plot_y)
     
-    legend('Positive', 'Negative', 'Decision Boundary')
+    legend('Fragmented', 'Tubular', 'Decision Boundary')
     axis([30, 100, 30, 100])
 else
     % Here is the grid range
