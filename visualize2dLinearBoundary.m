@@ -23,5 +23,5 @@ plot(plot_x, plot_y)
 
 xlabel('\sigma_r','fontsize',14);
 ylabel('circularity','fontsize',14);
-legend('Fragmented', 'Tubular', 'Decision Boundary')
+legend('Fragmented', 'Tubular', 'Decision Boundary','Location','NorthOutside','Orientation','horizontal')
 end

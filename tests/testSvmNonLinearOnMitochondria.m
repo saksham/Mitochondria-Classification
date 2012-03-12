@@ -19,17 +19,17 @@ images_struct = load('../data/images.mat');
 images = images_struct(1).('images');
 
 %faster
-fast = [1 2 3 4 5 6 7 8 9 10 21 22 23 24 25 26 27 28 29 30];
-y_vec_fast = zeros(length(fast),1);
-images_fast = cell(1);
-
-for k = 1 : length(fast)
-    images_fast{k} = images{fast(k)};
-    y_vec_fast(k) = y_vec(fast(k));
-end
-
-images = images_fast;
-y_vec = y_vec_fast;
+% fast = [1 2 3 4 5 6 7 8 9 10 21 22 23 24 25 26 27 28 29 30];
+% y_vec_fast = zeros(length(fast),1);
+% images_fast = cell(1);
+% 
+% for k = 1 : length(fast)
+%     images_fast{k} = images{fast(k)};
+%     y_vec_fast(k) = y_vec(fast(k));
+% end
+% 
+% images = images_fast;
+% y_vec = y_vec_fast;
 
 features = imageFeatureExtraction(images, black_percentage, white_percentage);
 
@@ -43,8 +43,8 @@ features(:,2) = features(:,2)./max_x2;
 y_pred = svmNonLinearPredict(SV_X , SV_y , alpha, features, 'gauss',0.2,0);
 
 % Plot
-predict = @(features)svmNonLinearPredict(SV_X , SV_y , alpha, features, 'gauss',0.2,0);
-visualize2dNonLinearBoundary(features, y_pred, @(features)predict([0:0.1:1]))
+predict = @(input)svmNonLinearPredict(SV_X , SV_y , alpha, input, 'gauss',0.2,0);
+visualize2dNonLinearBoundary(features, y_vec, 1000, @(input)predict(input))
 
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;

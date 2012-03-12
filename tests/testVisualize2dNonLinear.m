@@ -6,7 +6,7 @@ X = randn(125, 2);
 y = withinTheCircle(X(:, 1), X(:, 2), 0.5);
 
 predict = @(input)withinTheCircle(input(:, 1), input(:, 2), 0.5);
-visualize2dNonLinearBoundary(X, y, @(input)predict(input))
+visualize2dNonLinearBoundary(X, y, 1000, @(input)predict(input))
 
 end
 
