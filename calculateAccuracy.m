@@ -15,22 +15,24 @@ function [errorTrain, errorCv] = calculateAccuracy(X, y, trainFn, predictFn, k)
     
     errorTrain_vec = zeros(size(cp.TrainSize, 1));
     errorCv_vec = zeros(size(cp.TestSize, 1));
-    cvStart = 1;
+    cvStart = 0;
     
     for i = 1:cp.NumTestSets
         % --------------- Compute the indices
-        trainIndices = [];
+        trainIndices = zeros(1, cp.TrainSize(i));
+        nextTrainIndex = 1;
         if(i > 1)
-            up = sum(cp.TestSize(1:i-1)) - 1;
-            trainIndices= 1:up;
+            up = sum(cp.TestSize(1:i-1));
+            trainIndices(nextTrainIndex:up)= 1:up;
+            nextTrainIndex = nextTrainIndex + up;
         end
         
         % Cross validation indices
-        cvEnd = cvStart + cp.TestSize(i) - 1;
-        cvIndices = cvStart:cvEnd;
+        cvEnd = cvStart + cp.TestSize(i);
+        cvIndices = (cvStart + 1):cvEnd;
         
         if(i < cp.NumTestSets)
-            trainIndices = [trainIndices (cvEnd + 1):cp.N];
+            trainIndices(nextTrainIndex:end) = (cvEnd + 1):cp.N;
         end
         
         % ------ Train the learning algorithm

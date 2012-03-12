@@ -7,9 +7,6 @@ function testCalculateAccuracy
     radius = 0.5;
     y = isWithinCircle(X(:, 1), X(:, 2), radius + 0.5);
     
-    predict = @(input)isWithinCircle(input(:, 1), input(:, 2), radius);
-    visualize2dNonLinearBoundary(X, y, @(input)predict(input))
-    
     trainFn = @(xTrain, yTrain)pretendToFindTheRadius(xTrain(:, 1), xTrain(:, 2), 0.5);
     predictFn = @(xTest, options)isWithinCircle(xTest(:, 1), xTest(:, 2), options);
     
