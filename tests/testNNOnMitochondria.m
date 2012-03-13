@@ -8,6 +8,11 @@ addpath(str);
 str = strrep(pwd, '/tests', '/xunit');
 addpath(str);
 
+% Check for input variables
+if nargin == 0
+    x = [0.8438 0.1094];
+end
+
 % Create a neural network
 input_layer_size = 400;     % 20x20 imput images of digits
 hidden_layer_size = 10;     % Just 1 hidden layer with 10 nodes

@@ -11,9 +11,12 @@ addpath(str);
 X = [0 0 ; 1 0 ; 0 1 ; 1 1 ; 0.3 0.3 ; 0.9 0.9];
 y = [-1 ; -1 ; -1 ; 1 ; 1 ; 1];
 
-[w , b] = svmLinear(X,y,1000);
+param = svmLinear(X,y,1000);
 
-assertElementsAlmostEqual(w, [0.7071 ; 0.7071], 'absolute', 0.0001);
+W = param.('W');
+b = param.('b');
+
+assertElementsAlmostEqual(W, [0.7071 ; 0.7071], 'absolute', 0.0001);
 assertElementsAlmostEqual(b, -0.7778, 'absolute', 0.0001);
 
 end

@@ -1,4 +1,4 @@
-function [ COV_new , MU_new ] = MAP( COV_old , MU_old , number_old , X , y , labels , ...
+function param = MAP( COV_old , MU_old , number_old , X , y , labels , ...
     prior , new )
 %MAP Summary of this function goes here
 %   Detailed explanation goes here
@@ -34,6 +34,8 @@ for k = 1 : c
         COV_new(:,:,k) = inv(new(k).*inv(COV_MLE(:,:,k))+prior(k).*inv(COV_old(:,:,k)));
     end
 end
+
+param = struct('COV', COV_new, 'MU', MU_new, 'labels', labels);
 
 end
 

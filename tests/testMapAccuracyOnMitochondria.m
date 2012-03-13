@@ -1,4 +1,4 @@
-function [ overall_error ] = testSvmNonLinearOnMitochondria( x )
+function [ overall_error ] = testMapAccuracyOnMitochondria( x )
 %TESTIMAGEFEATUREEXTRACTION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -23,18 +23,8 @@ y_vec = y_vec_struct(1).('y_vec');
 images_struct = load('../data/images.mat');
 images = images_struct(1).('images');
 
-%faster
-% fast = [1 2 3 4 5 6 7 8 9 10 21 22 23 24 25 26 27 28 29 30];
-% y_vec_fast = zeros(length(fast),1);
-% images_fast = cell(1);
-% 
-% for k = 1 : length(fast)
-%     images_fast{k} = images{fast(k)};
-%     y_vec_fast(k) = y_vec(fast(k));
-% end
-% 
-% images = images_fast;
-% y_vec = y_vec_fast;
+
+overall_error = 0;
 
 features = imageFeatureExtraction(images, black_percentage, white_percentage);
 
@@ -43,18 +33,12 @@ max_x2 = max(features(:,2));
 features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
-param = svmNonLinear(features, y_vec , 1000,'gauss',0.2,0);
+COV = zeros(2,2,2);
+MU = zeros(2,2);
 
-y_pred = svmNonLinearPredict(features, param);
-
-% Plot
-predict = @(input)svmNonLinearPredict(input, param);
-visualize2dNonLinearBoundary(features, y_vec, 100, @(input)predict(input))
-
-
-trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
-
-overall_error = 100 - trainingSetAccuracy;
-disp(['ERROR(overall_error): ' num2str(overall_error)]);
-
+% Initialize training and prediction algorithms
+trainFn = @(xTrain, yTrain)MAP(COV , MU , length(y_vec), xTrain, yTrain, [-1 , 1] , [0 0] , [1 1]);
+predictFn = @(xTest, options)mapPredict(xTest, options);
+    
+[errTrain, errCv] = calculateAccuracy(features, y_vec, trainFn, predictFn, 20);
 end

@@ -1,4 +1,4 @@
-function [ SV_X , SV_y , alpha_return ] = ...
+function param = ...
     svmNonLinear( X , y , C , kernel_type_string , arg1 , arg2)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
@@ -80,6 +80,9 @@ for i = 1 : sample_number
         SV_y = [SV_y ; y(i,:)];
     end
 end
+
+param = struct('SV_X', SV_X, 'SV_y', SV_y, 'alpha', alpha_return, ...
+    'kernel_type_string', kernel_type_string, 'arg1', arg1, 'arg2', arg2);
 
     function [ value ] = getKernelValue( x1 , x2)        
         if kernel_type == 1

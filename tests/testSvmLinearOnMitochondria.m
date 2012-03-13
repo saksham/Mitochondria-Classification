@@ -8,6 +8,11 @@ addpath(str);
 str = strrep(pwd, '/tests', '/xunit');
 addpath(str);
 
+% Check for input variables
+if nargin == 0
+    x = [0.8438 0.1094];
+end
+
 black_percentage = x(1);
 white_percentage = x(2);
 disp([num2str(black_percentage) ' : ' num2str(white_percentage)]);
@@ -39,11 +44,14 @@ features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
 
-[W , b] = svmLinear(features,y_vec,1000);
+param = svmLinear(features,y_vec,1000);
+
+W = param.('W');
+b = param.('b');
 
 plot2dDecisionBoundary([b ; W], [ones(length(y_vec),1) features], y_vec);
 
-y_pred = svmLinearPredict(W, b, features);
+y_pred = svmLinearPredict(features, param);
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
 

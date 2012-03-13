@@ -3,6 +3,12 @@ function testCalculateAccuracy
 %   Checks whether training and cross-validation error for a simple
 %   function is computed correctly.
 
+    %Paths
+    str = strrep(pwd, '/tests', '');
+    addpath(str);
+    str = strrep(pwd, '/tests', '/xunit');
+    addpath(str);
+
     X = randn(101, 2);
     radius = 0.5;
     y = isWithinCircle(X(:, 1), X(:, 2), radius + 0.5);

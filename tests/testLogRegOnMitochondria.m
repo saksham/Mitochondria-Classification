@@ -8,6 +8,11 @@ addpath(str);
 str = strrep(pwd, '/tests', '/xunit');
 addpath(str);
 
+% Check for input variables
+if nargin == 0
+    x = [0.8438 0.1094];
+end
+
 black_percentage = x(1);
 white_percentage = x(2);
 disp([num2str(black_percentage) ' : ' num2str(white_percentage)]);
@@ -43,13 +48,13 @@ lambda = 0;
 % Set options and optimize
 options = optimset('GradObj', 'on', 'MaxIter', 500);
 [theta, J, exit_flag] = ...
-	fminunc(@(t)(logRegCostFunction(t, features, y_vec, lambda)), initial_theta, options);
+	fminunc(@(t)(logRegCostFunction(features, y_vec, t, lambda)), initial_theta, options);
 
 
 plot2dDecisionBoundary(theta, features, y_vec);
 
 % Compute accuracy on our training set
-y_pred = logRegPredict(theta, features);
+y_pred = logRegPredict(features, theta);
 
 trainingSetAccuracy = mean(double(y_pred == y_vec)) * 100;
 

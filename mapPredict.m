@@ -1,6 +1,10 @@
-function [ y_pred ] = mapPredict( COV , MU , labels , X )
+function [ y_pred ] = mapPredict( X, param )
 %MAPPREDICT Summary of this function goes here
 %   Detailed explanation goes here
+
+COV = param.('COV');
+MU = param.('MU');
+labels = param.('labels');
 
 size_X = size(X);
 n = size_X(1);

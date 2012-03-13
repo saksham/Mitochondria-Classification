@@ -1,4 +1,4 @@
-function [ w , b ] = svmLinear( X , y , C)
+function param = svmLinear( X , y , C)
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -65,5 +65,7 @@ for i = 1 : sample_number
     sum1 = sum1 + (y(i) - sum2);
 end
 b = (sum1 / support_vector_counter) / w_norm;
+
+param = struct('W', w, 'b', b);
 
 end

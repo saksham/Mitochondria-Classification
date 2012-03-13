@@ -1,6 +1,13 @@
-function [ new_y ] = svmNonLinearPredict( SV_X , SV_y , alpha , new_X , kernel_type_string , arg1 , arg2)
+function [ new_y ] = svmNonLinearPredict( new_X , param )
 %SVMGETVECTORSNOKERNEL Summary of this function goes here
 %   Detailed explanation goes here
+
+SV_X = param.('SV_X');
+SV_y = param.('SV_y');
+alpha = param.('alpha');
+kernel_type_string = param.('kernel_type_string');
+arg1 = param.('arg1');
+arg2 = param.('arg2');
 
 power = 1;
 additive_constant = 0;

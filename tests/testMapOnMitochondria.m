@@ -8,6 +8,11 @@ addpath(str);
 str = strrep(pwd, '/tests', '/xunit');
 addpath(str);
 
+% Check for input variables
+if nargin == 0
+    x = [0.8438 0.1094];
+end
+
 black_percentage = x(1);
 white_percentage = x(2);
 disp([num2str(black_percentage) ' : ' num2str(white_percentage)]);
@@ -43,15 +48,17 @@ features(:,2) = features(:,2)./max_x2;
 
 COV = zeros(2,2,2);
 MU = zeros(2,2);
-[COV , MU] = MAP( COV , MU , length(y_vec) , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+param = MAP( COV , MU , length(y_vec) , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
 
-y_pred = mapPredict(COV , MU , [-1 , 1] , features);
+y_pred = mapPredict(features, param);
 
 % Plot
-predict = @(input)mapPredict(COV , MU , [-1 , 1], input);
-visualize2dNonLinearBoundary(features, y_vec, 1000, @(input)predict(input))
+predict = @(input)mapPredict(input, param);
+visualize2dNonLinearBoundary(features, y_vec, 100, @(input)predict(input))
 hold on;
 grey = [0.4,0.4,0.4];
+COV = param.('COV');
+MU = param.('MU');
 [x,y,z] = evalF(1,MU(1,:),COV(:,:,1));
 contour(x,y,z,1,'Color',grey);
 [x,y,z] = evalF(1,MU(2,:),COV(:,:,2));
