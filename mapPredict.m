@@ -1,16 +1,24 @@
 function [ y_pred ] = mapPredict( X, param )
-%MAPPREDICT Summary of this function goes here
-%   Detailed explanation goes here
+% MAPPREDICT: Predicts class labels of the data set X using covariances and
+% means stored in params. Prediction is based on a Multivariate Gaussian
+% distribution.
+% [ y_pred ] = mapPredict( X, param )
+%   X: the data set
+%   param: parameters for the prediction (covariance and mean for each 
+%   class)
 
+% training parameters
 COV = param.('COV');
 MU = param.('MU');
 labels = param.('labels');
 
+% initializations
 size_X = size(X);
 n = size_X(1);
 y_pred = zeros(n,1);
 c = length(labels);
 
+% prediction
 for i = 1 : n
     results = zeros(c,1);
     for k = 1 : c

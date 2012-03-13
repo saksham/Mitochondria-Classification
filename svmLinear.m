@@ -1,13 +1,19 @@
 function param = svmLinear( X , y , C)
-%SVMGETVECTORSNOKERNEL Summary of this function goes here
-%   Detailed explanation goes here
+% SVMLINEAR Function to train a Support Vector Machine on a two class
+% classification problem. The values w and b of the decision boundary will
+% be returned.
+%   X: training features
+%   y: classification for training features
+%   C: 'hardness' of the decision boundary concerning missclassification
 
 sample_number = length(y);
 sample_dimension = size(X);
-H = zeros(sample_number,sample_number);
+
 % tolerance for Support Vector Detection
 epsilon = C*1e-6;
 
+% computing the Hessian
+H = zeros(sample_number,sample_number);
 for i=1:sample_number
     for j=1:sample_number
         H(i,j) = y(i)*y(j)*X(i,:)*X(j,:)';

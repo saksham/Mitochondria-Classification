@@ -8,9 +8,9 @@ DiffMinChange_Data = 0.01;
 A = [1 1];
 b = [1];
 
-% Start with the default options
+% start with the default options
 options = optimset;
-% Modify options setting
+% modify options setting
 options = optimset(options,'Display', 'off');
 options = optimset(options,'PlotFcns', {  @optimplotx @optimplotfval @optimplotstepsize });
 options = optimset(options,'Algorithm', 'interior-point');

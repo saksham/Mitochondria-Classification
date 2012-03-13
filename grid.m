@@ -1,4 +1,7 @@
 function [XBest,BestF,Iters]=grid(N, XLo, XHi, NumDiv, MinDeltaX, Eps_Fx, MaxIter, myFx)
+% Function by Namir Shammas. 
+% See http://namirshammas.com/MATLAB/Optim_Grid1.htm for more information
+
 % Function performs multivariate optimization using the
 % grid search.
 %

@@ -8,7 +8,7 @@ function testPickSharpestImage
 %
 % See also: ESTIMATESHARPNESS
 %
-    stack = tiffread2('data/bcis78-2.stk', 1, 1000);
+    stack = tiffread2('../data/bcis78-2.stk', 1, 1000);
     
     n = size(stack, 2);
     sharpness = zeros(1,n);

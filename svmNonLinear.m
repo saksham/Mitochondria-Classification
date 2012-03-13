@@ -1,12 +1,21 @@
 function param = ...
     svmNonLinear( X , y , C , kernel_type_string , arg1 , arg2)
-%SVMGETVECTORSNOKERNEL Summary of this function goes here
-%   Detailed explanation goes here
+% SVMNONLINEAR Function to train a Support Vector Machine on a two class
+% classification problem. To deal with non linear seperable problems two
+% different kinds of kernels can be used. A Polynomial Kernel and a Gaussian
+% Kernel. The found support vectors and the SVM training setting will be
+% returned.
+%   X: training features
+%   y: classification for training features
+%   C: 'hardness' of the decision boundary concerning missclassification
+%   kernel_type_string: strings 'poly' or 'gauss' to select a kernel
+%   arg1: 'poly' - power / 'gauss' - sigma2
+%   arg2: 'poly' - additive_constant
 
+% initialization
 power = 1;
 additive_constant = 0;
 sigma2 = 0.25;
-
 kernel_type = 0;
 switch kernel_type_string
     case 'poly'
@@ -22,7 +31,7 @@ sample_number = length(y);
 % tolerance for support vector detection
 epsilon = C*1e-6;
 
-% construct the hessian
+% compute the Hessian
 H = zeros(sample_number,sample_number);
 for i=1:sample_number
     for j=1:sample_number

@@ -1,7 +1,12 @@
 function [ new_y ] = svmNonLinearPredict( new_X , param )
-%SVMGETVECTORSNOKERNEL Summary of this function goes here
-%   Detailed explanation goes here
+% SVMNONLINEARPREDICT Predicts the labels of new features using the SVM
+% settings given in param.
+%   new_X: features to predict
+%   param: parameters containing the support vectors, the support vectors'
+%   labels, the alpha values, the kernel type, and additional arguments for
+%   the kernels
 
+% initialization
 SV_X = param.('SV_X');
 SV_y = param.('SV_y');
 alpha = param.('alpha');
@@ -12,7 +17,6 @@ arg2 = param.('arg2');
 power = 1;
 additive_constant = 0;
 sigma2 = 0.25;
-
 kernel_type = 0;
 switch kernel_type_string
     case 'poly'
@@ -27,6 +31,7 @@ end
 sample_number = length(SV_y);
 support_vector_counter = sample_number;
 
+% compute b
 sum1 = 0;
 for i = 1 : sample_number
     if alpha(i) == 0

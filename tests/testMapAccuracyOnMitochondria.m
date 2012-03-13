@@ -37,7 +37,7 @@ COV = zeros(2,2,2);
 MU = zeros(2,2);
 
 % Initialize training and prediction algorithms
-trainFn = @(xTrain, yTrain)MAP(COV , MU , length(y_vec), xTrain, yTrain, [-1 , 1] , [0 0] , [1 1]);
+trainFn = @(xTrain, yTrain)map(COV , MU , xTrain, yTrain, [-1 , 1] , [0 0] , [1 1]);
 predictFn = @(xTest, options)mapPredict(xTest, options);
     
 [errTrain, errCv] = calculateAccuracy(features, y_vec, trainFn, predictFn, 20);

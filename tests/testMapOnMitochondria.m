@@ -48,7 +48,7 @@ features(:,2) = features(:,2)./max_x2;
 
 COV = zeros(2,2,2);
 MU = zeros(2,2);
-param = MAP( COV , MU , length(y_vec) , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
+param = map( COV , MU , features , y_vec , [-1 , 1] , [0 0] , [1 1]);
 
 y_pred = mapPredict(features, param);
 

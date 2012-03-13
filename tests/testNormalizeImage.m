@@ -30,7 +30,7 @@ end
 [MAX_i, i] = max(sharpness);
 I = stack(i).('data');
 eight = normalizeImage(I);
-eight_mat = normalizeImageMat(I);
+eight_mat = normalizeImage(I);
 
 imshow(eight_mat);
 
