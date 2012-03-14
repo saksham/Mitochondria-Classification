@@ -29,7 +29,7 @@ for i = 1 : n
         y_pred(i) = 2;
     end
     % Plot
-    %visualizeBlobPrediction(I, blobs, y_pred_image);
+    visualizeBlobPrediction(I, blobs, y_pred_image);
 end
 
 end
