@@ -1,4 +1,4 @@
-function [ overall_error ] = testMapAccuracyOnMitochondria( x )
+function [ errTrain, errCv ] = testMapAccuracyOnMitochondria( x )
 %TESTIMAGEFEATUREEXTRACTION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -23,8 +23,8 @@ y_vec = y_vec_struct(1).('y_vec');
 images_struct = load('../data/images.mat');
 images = images_struct(1).('images');
 
-
-overall_error = 0;
+% Change the labels to {0, 1} instead of {-1, 1}
+y_vec = (y_vec + 1) / 2;
 
 features = imageFeatureExtraction(images, black_percentage, white_percentage);
 

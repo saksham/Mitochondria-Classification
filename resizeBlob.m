@@ -44,9 +44,14 @@ for i = 1 : size_b(1)
     B(b(i,1)+margin_x,b(i,2)+margin_y) = 1;
 end
 
+% filling
+B = im2bw(B,0.5);
+B = imfill(B,'holes');
+
 % resizing
 B = imresize(B,[20 20]);
-B = im2bw(B,0.5);
+
+%imshow(B);
 
 end
 
