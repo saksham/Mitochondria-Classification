@@ -39,18 +39,11 @@ error = sum(distanceSum);
 % plot
 % figure;
 % hold on;
-% for i = 1:n
-%     if U(1,i) > 0.5
-%         scatter(X(1,i),X(2,i),'X');
-%     else
-%         scatter(X(1,i),X(2,i),'O');
-%     end
-% end
-% for i = 1:c
-%     [x1,y1,z1] = cylinder(P(1,j,i),200);
-%     x1 = x1 + P(1,1,i);
-%     y1 = y1 + P(2,1,i);
-%     plot(x1(1,:),y1(1,:))
-% end
+% plot(X(1,:),X(2,:), 'kx', 'LineWidth', 2, 'MarkerSize', 7);
+% [x1,y1,z1] = cylinder(P(1,j),200);
+% x1 = x1 + P(1,1);
+% y1 = y1 + P(2,1);
+% plot(x1(1,:),y1(1,:),'LineWidth', 2,'Color','red')
+% axis equal;
 
 end
