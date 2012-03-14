@@ -31,7 +31,7 @@ features(:,1) = features(:,1)./max_x1;
 features(:,2) = features(:,2)./max_x2;
 
 % Initialize training and prediction algorithms
-trainFn = @(xTrain, yTrain)svmLinear(xTrain, yTrain, 1000);
+trainFn = @(xTrain, yTrain)svmLinear(xTrain, yTrain, 100);
 predictFn = @(xTest, options)svmLinearPredict(xTest, options);
     
 [errTrain, errCv] = calculateAccuracy(features, y_vec, trainFn, predictFn, 20);

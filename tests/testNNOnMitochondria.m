@@ -15,7 +15,7 @@ end
 
 % Create a neural network
 input_layer_size = 400;     % 20x20 imput images of digits
-hidden_layer_size = 30;     % Just 1 hidden layer with 10 nodes
+hidden_layer_size = 10;     % Just 1 hidden layer with 10 nodes
 num_labels = 2;            % 2 labels, from 1 to 2
 nn = nnCreate(input_layer_size, num_labels, hidden_layer_size);
 

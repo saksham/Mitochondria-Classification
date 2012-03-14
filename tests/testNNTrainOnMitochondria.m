@@ -19,7 +19,18 @@ for i = 1 : n
         y(counter) = y_vec(i);
     end
 end
-nn = nnTrain(nn, features, y', 2, 10);
+
+% use same amount of features for each class
+ind_1 = find(y==1);
+ind_2 = find(y==2);
+if length(ind_1) > length(ind_2)
+    ind_1 = ind_1(:,1:length(ind_2));
+else
+    ind_2 = ind_2(:,1:length(ind_1));
+end
+ind_1_2 = [ind_1 ind_2];
+
+nn = nnTrain(nn, features(ind_1_2,:), y(ind_1_2)', 2, 20);
 
 param = struct('nn', nn, 'black_percentage', black_percentage, 'white_percentage', white_percentage);
 

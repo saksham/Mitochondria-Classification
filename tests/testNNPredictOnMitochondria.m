@@ -22,14 +22,14 @@ for i = 1 : n
     end
     y_pred_image = nnPredict(nn, new_features);
     result = sum(y_pred_image);
-    %disp(num2str(result/m));
+    % disp(num2str(result/m));
     if(result/m < 1.5)
         y_pred(i) = 1;
     else
         y_pred(i) = 2;
     end
     % Plot
-    visualizeBlobPrediction(I, blobs, y_pred_image);
+    %visualizeBlobPrediction(I, blobs, y_pred_image);
 end
 
 end
