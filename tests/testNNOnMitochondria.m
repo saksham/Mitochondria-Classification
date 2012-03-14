@@ -44,29 +44,29 @@ end
 
 images = images_fast;
 y_vec = y_vec_fast;
-y_vec_copy = y_vec;
 
-size_images = size(images);
-n = size_images(2);
-counter = 0;
-for i = 1 : n
-    I = images{i};
-    blobs = blobVector(I , black_percentage , white_percentage);
-    m = length(blobs);
-    for k = 1 : m
-        counter = counter + 1;
-        b = blobs{k};
-        B = resizeBlob(b);
-        features(counter,:) = B(:);
-        if y_vec(i) == -1
-            y(counter) = 2;
-            y_vec_copy(i) = 2;
-        else
-            y(counter) = y_vec(i);
-        end
-    end
-end
-nn = nnTrain(nn, features, y', 2, 50);
+% size_images = size(images);
+% n = size_images(2);
+% counter = 0;
+% for i = 1 : n
+%     I = images{i};
+%     blobs = blobVector(I , black_percentage , white_percentage);
+%     m = length(blobs);
+%     for k = 1 : m
+%         counter = counter + 1;
+%         b = blobs{k};
+%         B = resizeBlob(b);
+%         features(counter,:) = B(:);
+%         if y_vec(i) == -1
+%             y(counter) = 2;
+%         else
+%             y(counter) = y_vec(i);
+%         end
+%     end
+% end
+% nn = nnTrain(nn, features, y', 2, 50);
+
+param = testNNTrainOnMitochondria(images, y_vec, nn, black_percentage , white_percentage);
 
 %---Prediction------------------------------------------------------------%
 y_vec_struct = load('../data/y_vec.mat');
@@ -93,28 +93,29 @@ for i = 1 : length(y_vec)
     end
 end
 
-size_images = size(images);
-n = size_images(2);
-for i = 1 : n
-    I = images{i};
-    blobs = blobVector(I , black_percentage , white_percentage);
-    m = length(blobs);
-    new_features = zeros(m,input_layer_size);
-    for k = 1 : m
-        B = resizeBlob(blobs{k});
-        new_features(k,:) = B(:);
-    end
-    y_pred_image = nnPredict(nn, new_features);
-    result = sum(y_pred_image);
-    disp(num2str(result/m));
-    if(result/m < 1.5)
-        y_pred(i) = 1;
-    else
-        y_pred(i) = 2;
-    end
-    % Plot
-    visualizeBlobPrediction(I, blobs, y_pred_image);
-end
+% size_images = size(images);
+% n = size_images(2);
+% for i = 1 : n
+%     I = images{i};
+%     blobs = blobVector(I , black_percentage , white_percentage);
+%     m = length(blobs);
+%     new_features = zeros(m,input_layer_size);
+%     for k = 1 : m
+%         B = resizeBlob(blobs{k});
+%         new_features(k,:) = B(:);
+%     end
+%     y_pred_image = nnPredict(nn, new_features);
+%     result = sum(y_pred_image);
+%     disp(num2str(result/m));
+%     if(result/m < 1.5)
+%         y_pred(i) = 1;
+%     else
+%         y_pred(i) = 2;
+%     end
+%     % Plot
+%     %visualizeBlobPrediction(I, blobs, y_pred_image);
+% end
+y_pred = testNNPredictOnMitochondria(images, param);
 
 %---Accuracy--------------------------------------------------------------%
 trainingSetAccuracy = mean(double(y_pred == y_vec')) * 100;
