@@ -56,7 +56,7 @@ for i = 1:cp.NumTestSets
     yCv = y(cvIndices);
     predictionCv = predictFn(xCv, params);
     errorCv_vec(i) = 1.0 - mean(double(predictionCv == yCv));
-    
+    disp(['ERROR: ' num2str(errorCv_vec(i))]);
     
     cvStart = cvEnd;
 end

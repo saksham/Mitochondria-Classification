@@ -1,4 +1,4 @@
-function [ overall_error ] = testMapAccuracyOnMitochondria( x )
+function [ errTrain , errCv ] = testMapAccuracyOnMitochondria( x )
 %TESTIMAGEFEATUREEXTRACTION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -19,7 +19,7 @@ disp([num2str(black_percentage) ' : ' num2str(white_percentage)]);
 
 % Create a neural network
 input_layer_size = 400;     % 20x20 imput images of digits
-hidden_layer_size = 10;     % Just 1 hidden layer with 10 nodes
+hidden_layer_size = 30;     % Just 1 hidden layer with 10 nodes
 num_labels = 2;            % 2 labels, from 1 to 2
 nn = nnCreate(input_layer_size, num_labels, hidden_layer_size);
 
@@ -43,6 +43,11 @@ end
 % Initialize training and prediction algorithms
 trainFn = @(xTrain, yTrain)testNNTrainOnMitochondria(xTrain, yTrain, nn, black_percentage, white_percentage);
 predictFn = @(xTest, options)testNNPredictOnMitochondria(xTest, options);
+
+ind = find(y_vec == -1);
+ind_size = length(ind);
+
+y_vec(ind) = y_vec(ind) + 3*ones(ind_size,1);
     
-[errTrain, errCv] = calculateAccuracy(images_as_matrix, y_vec, trainFn, predictFn, 20);
+[errTrain, errCv] = calculateAccuracy(images_as_matrix, y_vec, trainFn, predictFn, 10);
 end

@@ -16,15 +16,10 @@ for i = 1 : n
         b = blobs{k};
         B = resizeBlob(b);
         features(counter,:) = B(:);
-        if y_vec(i) == -1
-            y(counter) = 2;
-            y_vec_copy(i) = 2;
-        else
-            y(counter) = y_vec(i);
-        end
+        y(counter) = y_vec(i);
     end
 end
-nn = nnTrain(nn, features, y', 2, 50);
+nn = nnTrain(nn, features, y', 2, 10);
 
 param = struct('nn', nn, 'black_percentage', black_percentage, 'white_percentage', white_percentage);
 
