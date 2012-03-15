@@ -59,10 +59,6 @@
 
 \begin_body
 
-\begin_layout Subsection
-MLE
-\end_layout
-
 \begin_layout Standard
 For the MLE classification it is assumed that the data is gaussian distributed
  for each of the classes.
@@ -71,7 +67,7 @@ For the MLE classification it is assumed that the data is gaussian distributed
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{N}(x|\mu,\Sigma)=\frac{1}{\sqrt{|2\pi\Sigma|}}\exp\left(-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right)
+\mathcal{N}(x|\mu,\Sigma)=\frac{1}{\sqrt{|2\pi\Sigma|}}\exp\left(-\frac{1}{2}(x-\mu)^{T}\Sigma^{-1}(x-\mu)\right)\label{eq:mle1}
 \end{equation}
 
 \end_inset
@@ -80,12 +76,19 @@ For the MLE classification it is assumed that the data is gaussian distributed
 \end_layout
 
 \begin_layout Standard
-To fit a multivariate gaussian on the data of one class it is necessary
- to compute 
+To fit a multivariate gaussian (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mle1"
+
+\end_inset
+
+) on the data of one class it is necessary to compute the maximum values
+ for the mean 
 \begin_inset Formula $\mu$
 \end_inset
 
- and 
+ and the covariance matrix 
 \begin_inset Formula $\Sigma$
 \end_inset
 
@@ -96,7 +99,7 @@ To fit a multivariate gaussian on the data of one class it is necessary
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mu_{MLE}=\frac{1}{n}\sum_{i=1}^{n}x_{i}
+\mu_{MLE}=\frac{1}{n}\sum_{i=1}^{n}x^{(i)}
 \end{equation}
 
 \end_inset
@@ -107,7 +110,7 @@ To fit a multivariate gaussian on the data of one class it is necessary
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Sigma_{MLE}=\frac{1}{n}\sum_{i=1}^{n}(x_{i}-\mu)(x_{i}-\mu)^{T}
+\Sigma_{MLE}=\frac{1}{n}\sum_{i=1}^{n}(x^{(i)}-\mu)(x^{(i)}-\mu)^{T}
 \end{equation}
 
 \end_inset
@@ -117,8 +120,51 @@ To fit a multivariate gaussian on the data of one class it is necessary
 
 \begin_layout Standard
 using MLE.
- These are the values that fitts best for the data seen during training.
- In 2D these Gaussian can be shown as ellipses over the data points.
+ The MLE optimization is repeated for each of the classes to evaluate 
+\begin_inset Formula $\mu_{f}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{t}$
+\end_inset
+
+, 
+\begin_inset Formula $\Sigma_{f}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{t}$
+\end_inset
+
+ for the classes fragmented and tubular.
+ In 2D the Gaussians can be shown as ellipses over the data points (see
+ figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Multivariate-Gaussians-fitted"
+
+\end_inset
+
+).
+ To predict on this model for new samples the values for both Gaussians
+ 
+\begin_inset Formula $p(x|\mu_{f},\Sigma_{f})$
+\end_inset
+
+ and 
+\begin_inset Formula $p(x|\mu_{t},\Sigma_{t})$
+\end_inset
+
+ have to be calculated.
+ The new class will be that one with the highes value returned.
+ 
+\end_layout
+
+\begin_layout Standard
+Despite the MLE classification ist one of the simplest methods, because
+ there exists a closed form and no complicatet optimization algorithms are
+ needed, it turned out to be the model with the best classification results
+ for the mitochondria data.
 \end_layout
 
 \begin_layout Standard
@@ -142,6 +188,13 @@ status open
 
 \begin_layout Plain Layout
 Multivariate Gaussians fitted on data set
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Multivariate-Gaussians-fitted"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
