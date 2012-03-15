@@ -111,7 +111,7 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -124,8 +124,8 @@ twocolumn[
 
 
 \backslash
-icmltitle{Automatic Classification of C-Elegans Mitochondria using Machine
- Learning Algorithms}
+icmltitle{Automatic Classification of C.
+ Elegans Mitochondria using Machine Learning Algorithms}
 \end_layout
 
 \begin_layout Plain Layout
@@ -207,11 +207,25 @@ vskip 0.3in
 \end_layout
 
 \begin_layout Abstract
-Mitochondria 
+Morphology of mitochondria is interesting for cell biologists because it
+ is believed to be linked to various biological pathways and processes.
+ Researchers from the Cell and Developmental Biology Department of Ludwig
+ Maximilians Universität Munich examine these organelles from a free-living
+ worm under a fluorescence microscope and classify them into two categories
+ based on their shapes.
+ This classification is performed by biologists by looking at the sharpest
+ image from the stack of images of the worms obtained from the microscope.
+ This process is biased because the biologists working with the worm have
+ prior expectation on the morphology.
+ Moreover, the human based image analysis is time intensive.
+ There is, hence, a need for an unbiased metric for the morphology of mitochondr
+ia, and possible automation of the morphometric analysis.
+ In this report, the authors suggest use of two features for classification
+ of mitochondria and present their findings on how different machine learning
+ algorithms MLE, logistic regression, SVM and neural networks.
 \end_layout
 
 \begin_layout Section
-<<<<<<< HEAD
 Background
 \end_layout
 
@@ -227,9 +241,6 @@ filename "background.lyx"
 
 \begin_layout Section
 Data Acquisition, Processing and Feature Extraction (something like that)
-=======
-Data Acquisition and Pre-processing
->>>>>>> mle
 \end_layout
 
 \begin_layout Standard
@@ -257,34 +268,18 @@ Classification
 \end_layout
 
 \begin_layout Standard
-<<<<<<< HEAD
 Four machine learning algorithms: maximum likelihood estimation (MLE), logistic
  regression, support vector machine (SVM) and neural networks, were used
  for classifying the mitochondria from the sharpest image.
  Each of them is discussed in detail below.
-=======
-All submissions must follow the same format to ensure the printer can reproduce
- them without problems and to let readers more easily find the information
- that they desire.
+\end_layout
+
+\begin_layout Subsection
+MLE
 \end_layout
 
 \begin_layout Subsection
 Logistic Regression
-\end_layout
-
-\begin_layout Subsection
-MLE/MAP
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "mle.lyx"
-
-\end_inset
-
-
->>>>>>> mle
 \end_layout
 
 \begin_layout Standard
@@ -384,30 +379,19 @@ vskip
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{
-\end_layout
+\begin_inset Graphics
+	filename images/boundary_circle_1.eps
+	clip
+	rotateOrigin center
+	special width=\columnwidth
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
-\end_inset
-
- 
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption
 
 \begin_layout Plain Layout
@@ -1424,19 +1408,11 @@ Software and Data
 
 \begin_layout Standard
 The software used for the project is available for free under the url: .
-status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "example_paper"
-
-\end_inset
-
- 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1444,6 +1420,20 @@ status collapsed
 \backslash
 bibliographystyle{icml2010}
 \end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
 
 \end_inset
 
