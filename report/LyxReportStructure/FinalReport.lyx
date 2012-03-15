@@ -111,7 +111,7 @@
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -125,7 +125,7 @@ twocolumn[
 
 \backslash
 icmltitle{Automatic Classification of C-Elegans Mitochondria using Machine
- Learning}
+ Learning Algorithms}
 \end_layout
 
 \begin_layout Plain Layout
@@ -207,22 +207,17 @@ vskip 0.3in
 \end_layout
 
 \begin_layout Abstract
-ICML 2010 full paper submissions are due February 1, 2010.
- Reviewing will be blind to the identities of the authors, and therefore
- identifying information should not appear in any way in papers submitted
- for review.
- Submissions must be in PDF, 8 page length limit.
- 
+The 
 \end_layout
 
 \begin_layout Section
-Data Acquisition and Processing
+Data Acquisition and Pre-processing
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "submission"
+name "data-acquisition"
 
 \end_inset
 
@@ -230,20 +225,17 @@ name "submission"
 \end_layout
 
 \begin_layout Standard
-As in the past few years, ICML 2010 will rely exclusively on electronic
- formats for submission and review.
- We assume that all authors will have access to standard software for word
- processing, electronic mail, and web file transfer.
- Authors who do not have such access should send email with their concerns
- to 
-\family typewriter
-icml10.programchairs@gmail.com
-\family default
-.
+\begin_inset CommandInset include
+LatexCommand input
+filename "data_pre_processing.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-Templates for Papers
+Data Source
 \end_layout
 
 \begin_layout Standard
@@ -863,7 +855,7 @@ name "author info"
 To facilitate blind review, author information must not appear.
  If you are using LaTeX
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
