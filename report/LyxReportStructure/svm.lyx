@@ -60,7 +60,287 @@
 \begin_body
 
 \begin_layout Standard
-Support vector machines description.
+Support vector machines (SVM) belong to a group of classifiers called sparse
+ kernel machines.
+ A big advantage of these machines is that they have sparse solutions, so
+ that the predictions for new inputs depend only on the kernel function
+ eveluated at a subset of the training data points.
+ The result of their computation is a decision boundary.
+ This boundary can be linear or non-linear, depending on the used kernel.
+\end_layout
+
+\begin_layout Paragraph
+Linear SVM
+\end_layout
+
+\begin_layout Standard
+The linear SVM computes a linear decision boundary that sepperates the two
+ classes, fragmented and tubular.
+ It finds that boundary that maximizes the margin between the classes and
+ the decision boundary.
+ The data points that are closest to the boundary become the so called support
+ vectors and the solution only depends on them.
+ To classify new samples the function
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y^{(i)}=\mbox{{sign}}(w\cdot x^{(i)}+b)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+whereas the classes have labels 
+\begin_inset Formula $\{-1,1\}$
+\end_inset
+
+.
+ The primal formulation of the problem is then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{P}=\frac{1}{2}\|w\|^{2}-\sum_{i}\alpha^{(i)}y^{(i)}(w\cdot x^{(i)})-\sum_{i}\alpha^{(i)}y^{(i)}b+\sum_{i}\alpha^{(i)}.
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}\alpha^{(i)}y^{(i)}=0\label{eq:constraintsvm1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha^{(i)}\geq0\label{eq:constraintsvm2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+0\text{≤α}^{(i)}\text{≤}C\label{eq:constraintsvm3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because the mitochondria data set has shown not to be perfectly linear seperable
+ (see figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Linear-SVM"
+
+\end_inset
+
+) the variable 
+\begin_inset Formula $C$
+\end_inset
+
+ has been introduced to control the trade-off between slack variables and
+ the margin.
+ The slack variables allow missclassification but a penalty increasing with
+ the distance from the boundary will contribute to the optimization problem.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/SvmLinear_0_8438_-_0_1094.eps
+	special width=\columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Linear SVM
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Linear-SVM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Non-linear SVM
+\end_layout
+
+\begin_layout Standard
+Using the dual representation of the SVM classifiation problem it is posible
+ to use kernels to find non-linear decision boundaries in the feature space.
+ The dual presentation is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{D}=\sum_{i}\alpha^{(i)}-\frac{1}{2}\sum_{ij}\alpha^{(i)}\alpha^{(j)}y^{(i)}y^{(j)}(x^{(i)}\cdot x^{(j)})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+under the same constraints from equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:constraintsvm1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:constraintsvm2"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:constraintsvm3"
+
+\end_inset
+
+like in the the primal formulation.
+ The kernel 
+\begin_inset Formula $K(x^{(i)},x^{(j)})$
+\end_inset
+
+ is substituded to the inner product.
+\end_layout
+
+\begin_layout Standard
+The kernel puts the decision problem to a higher dimension in which the
+ data will become linear seperable.
+ For the mitochondria classification problem a Gaussian kernel (equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gaussiankernel"
+
+\end_inset
+
+) has been used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+K(a,b)=\exp\left(\frac{\|a-b\|^{2}}{2\sigma^{2}}\right)\label{eq:gaussiankernel}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The result for a decision boundary using the Gaussian kernel is shown in
+ figur 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Gaussian-Kernel-SVM"
+
+\end_inset
+
+.
+ The SVM lerned the shape of the data distribution perfectly, but there
+ is also a danger of overfitting on the possible outliers on the bottom
+ of the figur.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/SvmNonLinear_0_8438_-_0_1094.eps
+	special width=\columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Gaussian Kernel SVM
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Gaussian-Kernel-SVM"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
