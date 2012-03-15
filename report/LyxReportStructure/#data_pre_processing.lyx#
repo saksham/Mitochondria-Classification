@@ -361,12 +361,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/c1_m.eps
-	special width=\columnwidth
-
-\end_inset
-
 
 \end_layout
 
@@ -375,43 +369,6 @@ status open
 
 \begin_layout Plain Layout
 Detected fragmented mitochondria
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename images/l1_m.eps
-	special width= \columnwidth
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Detected tubular mitochondria
 \end_layout
 
 \end_inset
