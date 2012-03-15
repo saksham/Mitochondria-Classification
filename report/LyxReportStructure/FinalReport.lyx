@@ -425,7 +425,7 @@ reference "sec:data-acquisition"
 \begin_inset Formula $b_{u}$
 \end_inset
 
- used for the comparison in Table 
+ used for the comparison in table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:accuracy-ml-methods"
@@ -506,7 +506,7 @@ begin{sc}
 
  
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="6">
+<lyxtabular version="3" rows="4" columns="6">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -664,80 +664,6 @@ I
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-options
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-no prior
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $c=100$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $c=100$
-\end_inset
-
-, Gaussian Kernel, 
-\begin_inset Formula $\sigma^{2}=0.2$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-input nodes=400
-\backslash
-, hidden nodes = 10
-\backslash
-, 
-\begin_inset Formula $\lambda=2$
-\end_inset
-
-, iterations = 20
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -843,7 +769,7 @@ errTrain
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.1172
 \end_layout
 
 \end_inset
