@@ -165,6 +165,24 @@ reference "fig:Linear-SVM"
 \end_layout
 
 \begin_layout Standard
+The Linear SVM has been used to classify the mitochondria data set.
+ The value used for 
+\begin_inset Formula $C$
+\end_inset
+
+ was 100.
+ Because the data is almost linear seperable it produced good classifications
+ for new samples, too (see table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:accuracy-ml-methods"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -294,6 +312,15 @@ reference "fig:Gaussian-Kernel-SVM"
 \end_inset
 
 .
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ has been set to 100 and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ to 0.2.
  The SVM lerned the shape of the data distribution perfectly, but there
  is also a danger of overfitting on the possible outliers on the bottom
  of the figur.

@@ -267,7 +267,15 @@ The task is to find suitable values for
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f_{l}(l)=\sum_{i=1}^{l}h_{i}\leq\beta\sum_{i=1}^{256}h_{i}\qquad f_{u}(u)=\sum_{i=1}^{u}h_{256-i+1}\leq\alpha\sum_{i=1}^{256}h_{i}
+f_{l}(l)=\sum_{i=1}^{l}h_{i}\leq\beta\sum_{i=1}^{256}h_{i}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+f_{u}(u)=\sum_{i=1}^{u}h_{256-i+1}\leq\alpha\sum_{i=1}^{256}h_{i}
 \end{equation}
 
 \end_inset
