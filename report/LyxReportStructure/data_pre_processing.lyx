@@ -663,13 +663,23 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:classification-pipeline"
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vskip
+\end_layout
 
 \end_inset
 
+ 0.2in
+\end_layout
 
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/Pipeline.png
 	special width=\columnwidth
@@ -689,6 +699,30 @@ Overview of the classification pipeline
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:classification-pipeline"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+vskip
+\end_layout
+
+\end_inset
+
+-0.2in
 \end_layout
 
 \end_inset
