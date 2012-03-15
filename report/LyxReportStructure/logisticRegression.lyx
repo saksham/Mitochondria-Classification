@@ -60,25 +60,25 @@
 \begin_body
 
 \begin_layout Standard
-Unegularized logistic regression with the objective function 
+Unregularized logistic regression with the objective function 
 \begin_inset Formula $J(\theta)$
 \end_inset
 
- and the gradient as shown in Equations 
+ and the gradient as shown in equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:log-reg-cost-function"
 
 \end_inset
 
-and 
+ and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:log-reg-gradient-function"
 
 \end_inset
 
- were used for classifying data, where 
+ were used for classifying the data, where 
 \begin_inset Formula $m$
 \end_inset
 
@@ -132,7 +132,7 @@ represents the label for
 
 .
  The input for the logistic regression learning algorithm was the mean of
- the ratio of eigenvalues and the circularity measure.
+ the ratio of eigenvalues and the circularity measures.
  Standard MATLAB optimization function 
 \shape italic
 \size footnotesize
@@ -176,7 +176,8 @@ reference "fig:Classification-using-logistic"
 \end_inset
 
  shows decision boundary for the classification.
- 
+ For the entire data set, logistic regression seems to perform classification
+ quite well.
 \end_layout
 
 \begin_layout Standard

@@ -65,23 +65,25 @@ Data Pre-processing
 
 \begin_layout Standard
 To extract relevant features from the images preprocessing is necessary.
- To do so we created a preprocessing pipeline that consists of three steps.
+ To do so, a pre-processing pipeline comprising of three steps was created.
 \end_layout
 
 \begin_layout Paragraph*
-Sharpest image:
+Sharpest Image:
 \end_layout
 
 \begin_layout Standard
-Each image stack consists between around 8 to 18 photography’s of the same
+Each image stack consists between around 10 to 20 photographs of the same
  part of one worm.
- The images differ only in the focal plane that is shown.
- In the most cases only one of these images shows the mitochondria in a
- sharp and clear way that can be used to classify the mitochondria.
- The manual process is to look at each of the images, select the sharpest
- and proceed with the next classification tasks only with this one.
- If a program should become able to classify automatically, it is necessary
- to find a way to select the sharpest image automatically, too.
+ The images in a stack differ are taken at different focal planes of the
+ microscope.
+ In most of the cases only one of these images shows the mitochondria in
+ a sharp and clear way that can be used for classification.
+ The usual process is to look at each of the images in the stack, select
+ the sharpest and proceed with the next classification tasks only with the
+ sharpest image.
+ If a program is to be able to classify the mitochondria automatically,
+ it should be able to select the sharpest image automatically as well.
  
 \end_layout
 
@@ -113,7 +115,7 @@ For this purpose a simple gradient based estimation function is used.
 \end_inset
 
  normalized by the number of gradients gives a good estimation on how sharp
- a photography actually is.
+ a photograph actually is.
  
 \end_layout
 
@@ -156,21 +158,23 @@ The higher the value
 \end_inset
 
  the sharper the image.
- A disadvantage of this simple method is that one usually can only compare
- images showing the same motive and so in real image processing software
- much better methods for estimating image sharpness are in use.
- Nevertheless it has shown to be a sufficient method for our purposes.
- Because we are only comparing images within on single stack and they all
- show the exact same microscope photography.
+ A disadvantage of this simple method is that, one usually can only compare
+ images showing the same motif.
+ Hence, in real image processing software much better methods for estimating
+ image sharpness are in use.
+ Nevertheless it has proved itself to be a sufficient method for the purpose
+ of classification presented in this report.
+ This is because only images within a single stack are compared, and they
+ all show the exact same photograph.
 \end_layout
 
 \begin_layout Paragraph
-Histogram analysis:
+Histogram Analysis:
 \end_layout
 
 \begin_layout Standard
 To adjust the optimal contrast of each image it is necessary to have a look
- on the histograms and how the different levels (0 to 255) of gray are distribut
+ at the histograms and how the different levels (0 to 255) of gray are distribut
 ed all over one image.
 \end_layout
 
@@ -256,11 +260,11 @@ The task is to find suitable values for
 \begin_inset Formula $b_{l}$
 \end_inset
 
- the lower bound below which everything goes to 0 (black) and 
+, the lower bound, below which everything goes to 0 (black) and 
 \begin_inset Formula $b_{u}$
 \end_inset
 
- the upper bound above which everything goes to 255 (white).
+, the upper bound, above which everything goes to 255 (white).
  
 \end_layout
 
@@ -321,36 +325,37 @@ The gray scale levels in between are scaled to fit into the histogram of
  the output image.
  The result is a high contrast image in which mitochondria are much easier
  to find.
- Because of all the images have different histograms it is not possible
- to use the same lower bound and upper bound for all of them.
- So we defined the variables 
-\begin_inset Formula $b_{l}$
+ Because all the images have different histograms, it is not possible to
+ use the same lower bound and upper bound for all of them.
+ So the variables 
+\begin_inset Formula $\alpha$
 \end_inset
 
  and 
-\begin_inset Formula $b_{u}$
+\begin_inset Formula $\beta$
 \end_inset
 
- corresponding to how many of the pixels should become 0 (black) or 255
- (white) after the adjustment.
- Using this procedure we are able to find the optimal bounds for each individual
- image.
- The performance of the later classification process will highly depend
- on the output quality of this contrast adjustment.
+ were defined, corresponding to how many of the pixels should have the grayscale
+ value of 0 (black) or 255 (white) after the adjustment.
+ Using this procedure the optimal bounds for each individual image were
+ found.
+ The performance of the later classification process depends highly on the
+ quality of output of this contrast adjustment.
  In order to find the best values for 
-\begin_inset Formula $b_{l}$
+\begin_inset Formula $\alpha$
 \end_inset
 
  and 
-\begin_inset Formula $b_{u}$
+\begin_inset Formula $\beta$
 \end_inset
 
- we used the optimization tools of MatLab.
- The error to minimize is the misclassification rate on the training set.
+ we used the optimization tools of MATLAB.
+ Misclassification rate on the training set is used as the optimization
+ objective.
 \end_layout
 
 \begin_layout Paragraph
-Boundaries and blob detection:
+Boundaries and Blob Detection:
 \end_layout
 
 \begin_layout Standard
@@ -362,11 +367,11 @@ After improving the contrast of each image it can easily be converted to
 bwboundaries
 \shape default
 \size default
-' it is possible to trace the exterior boundaries of the mitochondria in
- the binary image.
+' it was possible trace the exterior boundaries of the mitochondria in the
+ binary image.
  After filtering out objects that are too big or too small to be valid mitochond
-ria we have generated a set of vectors each containing the borders of one
- of the mitochondria.
+ria a set of vectors were generated, each containing the borders of one
+ of the mitochondrion.
 \end_layout
 
 \begin_layout Standard
@@ -461,15 +466,19 @@ Circularity:
 \begin_layout Standard
 The circularity of mitochondria is one of the most important and reasonable
  ways to compare mitochondria in tubular and fragmented cells.
- If the cell is classified tubular the mitochondria are far from being circularl
-y dirtibuted whereas in a fragmented classified cell almost all of the mitochond
-ria are indeed shaped like circles.
+ If the cell is classified as 
+\shape italic
+tubular
+\shape default
+, the bounds of each mitochondrion are far from being circularly dirtibuted
+ whereas in a fragmented classified cell almost all of the mitochondria
+ are indeed shaped like circles.
 \end_layout
 
 \begin_layout Standard
-Since we have already found the boundaries in an earlier step of the preprocessi
-ng we use FuzzyCShells to calculate the error that represents how the average
- of the points are away from the circle.
+Since the boundaries have already been found in an earlier pre-processing
+ step, FuzzyCShells method was used to calculate the error that represents
+ the average of the distance between the points and the circle.
  The centre of the circle is the mean 
 \begin_inset Formula $\mu$
 \end_inset
@@ -555,6 +564,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/boundary_circle_1.eps
 	special width=\columnwidth
@@ -568,7 +578,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Blob boundary circular distributed
+Circular distributed boundary of a blob
 \end_layout
 
 \end_inset
@@ -592,6 +602,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/boundary_line_2.eps
 	special width=\columnwidth
@@ -605,7 +616,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Blob boundary line shaped distributed
+Tubuar shaped boundary of a blob
 \end_layout
 
 \end_inset
@@ -619,14 +630,15 @@ Blob boundary line shaped distributed
 \end_layout
 
 \begin_layout Paragraph
-Covariance analysis:
+Covariance Analysis:
 \end_layout
 
 \begin_layout Standard
 The covariance analysis is yet another way to generate a feature based on
  the shape of a blob.
- If data points are distributed line shaped then the covariance of the points
- has two highly different values for the covariance's eigenvalues 
+ If data points are distributed in a tubular fashion, then the covariance
+ of the points has two very different values for the covariance's eigenvalues
+ 
 \begin_inset Formula $\lambda_{b}$
 \end_inset
 
@@ -635,7 +647,7 @@ The covariance analysis is yet another way to generate a feature based on
 \end_inset
 
 , where 
-\begin_inset Formula $\lambda_{b}>=\lambda_{s}$
+\begin_inset Formula $\lambda_{b}\geqslant\lambda_{s}$
 \end_inset
 
 .
@@ -645,7 +657,11 @@ The covariance analysis is yet another way to generate a feature based on
 
  will belong to the eigenvector pointing in the direction along which the
  original blob data is distributed.
- So the ratio
+ So the ratio of the two eigen values, 
+\begin_inset Formula $e_{\lambda}$
+\end_inset
+
+, is close to zero if the data is distributed as a line.
 \end_layout
 
 \begin_layout Standard
@@ -659,13 +675,13 @@ e_{\lambda}=\lambda_{b}/\lambda_{s}
 
 \end_layout
 
-\begin_layout Standard
-is close to zero if the data has been line shaped distributed.
+\begin_layout Paragraph
+Thumbnail Features:
 \end_layout
 
 \begin_layout Standard
 After blob detection, the ratio of the eigenvalues and the circularity measure
- were passed as input to various classification algorithms as shown in Figure
+ were passed as input to various classification algorithms as shown in figure
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -674,13 +690,15 @@ reference "fig:classification-pipeline"
 \end_inset
 
 .
+ Note that features for neural network is slightly different from the rest
+ of classification methods.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -752,23 +770,28 @@ vskip
 \end_layout
 
 \begin_layout Standard
-For the Neural Network (only) the blobs have been used directly to train
- the model and make predictions.
- Despite now none of the extraction functions described above have been
- used still some image pre-processing is necessary.
- 
-\end_layout
+For neural network (only) the blobs have been used directly to train the
+ model and make predictions.
+ Instead of computing 
+\begin_inset Formula $e_{c}$
+\end_inset
 
-\begin_layout Standard
-First of all the blobs are resized to fit into an image of size 20
+ and 
+\begin_inset Formula $e_{\lambda}$
+\end_inset
+
+ for each blob and using these values as features for classification, the
+ pixel values of the blob are used directly to make predictions.
+ After blobs are detected, each blob is resized to fit into a 20
 \begin_inset Formula $\times$
 \end_inset
 
-20.
- In this image, they are centered and the space between the boundaries is
- filled.
- Vectorizing these single blob images produces an 400 dimensional feature
- space that can be used to train and predict on an Neural Network.
+20px image.
+ The blobs are then centered in the image.
+ A binary image is created by filling the blob with grayscale value of 255
+ (white) and that for rest of the image is set to 0 (black).
+ Vectorizing these single blob images produces a 400 dimensional feature
+ space that is then used to train a neural network and make predictions.
 \end_layout
 
 \end_body

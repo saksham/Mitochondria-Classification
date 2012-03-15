@@ -61,7 +61,14 @@
 
 \begin_layout Standard
 Support vector machines (SVM) belong to a group of classifiers called sparse
- kernel machines.
+ kernel machines 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bishop_Book"
+
+\end_inset
+
+.
  A big advantage of these machines is that they have sparse solutions, so
  that the predictions for new inputs depend only on the kernel function
  eveluated at a subset of the training data points.
@@ -145,8 +152,8 @@ L_{P}=\frac{1}{2}\|w\|^{2}-\sum_{i}\alpha^{(i)}y^{(i)}(w\cdot x^{(i)})-\sum_{i}\
 \end_layout
 
 \begin_layout Standard
-Because the mitochondria data set has shown not to be perfectly linear seperable
- (see figure 
+Because the mitochondria data set has shown not to be perfectly linearly
+ seperable (see figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Linear-SVM"
@@ -160,22 +167,31 @@ reference "fig:Linear-SVM"
  has been introduced to control the trade-off between slack variables and
  the margin.
  The slack variables allow missclassification but a penalty increasing with
- the distance from the boundary will contribute to the optimization problem.
+ the distance from the boundary will contribute to the optimization objective.
  
 \end_layout
 
 \begin_layout Standard
-The Linear SVM has been used to classify the mitochondria data set.
+The linear SVM has been used to classify the mitochondria data set.
  The value used for 
 \begin_inset Formula $C$
 \end_inset
 
  was 100.
- Because the data is almost linear seperable it produced good classifications
- for new samples, too (see table 
+ Because the data is almost linearly seperable it produced good classification
+ results for new samples, too (see table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:accuracy-ml-methods"
+
+\end_inset
+
+).
+ The linear decision boundary computed by SVM is almost identical to the
+ one found using logistic regression (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Classification-using-logistic"
 
 \end_inset
 
@@ -269,17 +285,13 @@ reference "eq:constraintsvm3"
 
 \end_inset
 
-like in the the primal formulation.
+ like in the the primal formulation.
  The kernel 
 \begin_inset Formula $K(x^{(i)},x^{(j)})$
 \end_inset
 
- is substituded to the inner product.
-\end_layout
-
-\begin_layout Standard
-The kernel puts the decision problem to a higher dimension in which the
- data will become linear seperable.
+ is substituted to the inner product and transforms the decision problem
+ to a higher dimension in which the data will become linear seperable.
  For the mitochondria classification problem a Gaussian kernel (equation
  
 \begin_inset CommandInset ref
@@ -304,7 +316,7 @@ K(a,b)=\exp\left(\frac{\|a-b\|^{2}}{2\sigma^{2}}\right)\label{eq:gaussiankernel}
 
 \begin_layout Standard
 The result for a decision boundary using the Gaussian kernel is shown in
- figur 
+ figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Gaussian-Kernel-SVM"
@@ -323,7 +335,7 @@ reference "fig:Gaussian-Kernel-SVM"
  to 0.2.
  The SVM lerned the shape of the data distribution perfectly, but there
  is also a danger of overfitting on the possible outliers on the bottom
- of the figur.
+ of the figure.
 \end_layout
 
 \begin_layout Standard

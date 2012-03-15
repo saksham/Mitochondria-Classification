@@ -106,17 +106,13 @@ slice
  These are attributes like “circularity” (shape compared to a perfect circle),
  length of one mitochondria, kind of clustering, etc.
  These data are used to classify the morphology of the mitochondria into
- three classes: 
+ two classes: 
 \shape italic
 fragmented
 \shape default
-, 
-\shape italic
-tubular
-\shape default
  and 
 \shape italic
-in between
+tubular
 \shape default
 .
  As this process involves human based classification, it is prone to biases

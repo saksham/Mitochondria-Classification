@@ -217,12 +217,13 @@ Morphology of mitochondria is interesting for cell biologists because it
  image from the stack of images of the worms obtained from the microscope.
  This process is biased because the biologists working with the worm have
  prior expectation on the morphology.
- Moreover, the human based image analysis is time intensive.
+ Moreover, the human based image analysis is time consuming.
  There is, hence, a need for an unbiased metric for the morphology of mitochondr
 ia, and possible automation of the morphometric analysis.
  In this report, the authors suggest use of two features for classification
- of mitochondria and present their findings on how different machine learning
- algorithms MLE, logistic regression, SVM and neural networks.
+ of mitochondria and present their findings on performance of the machine
+ learning algorithms MLE, logistic regression, SVM and neural networks on
+ the classification task.
 \end_layout
 
 \begin_layout Section
@@ -240,7 +241,7 @@ filename "background.lyx"
 \end_layout
 
 \begin_layout Section
-Data Acquisition, Processing and Feature Extraction (something like that)
+Data Pre-processing and Feature Extraction
 \end_layout
 
 \begin_layout Standard
@@ -250,7 +251,9 @@ name "sec:data-acquisition"
 
 \end_inset
 
-
+This section describes how the images in the stack file are processed before
+ classification can be done.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -276,9 +279,9 @@ name "sec:Classification"
 
 \begin_layout Standard
 Four machine learning algorithms: maximum likelihood estimation (MLE), logistic
- regression, support vector machine (SVM) and neural networks, were used
- for classifying the mitochondria from the sharpest image.
- Each of them is discussed in detail below.
+ regression, support vector machine (SVM) and neural networks (NN), were
+ used for classifying the mitochondria from the sharpest image.
+ Each of them is discussed in detail in this section.
 \end_layout
 
 \begin_layout Subsection
