@@ -337,160 +337,12 @@ filename "neural_network.lyx"
 
 \end_layout
 
-\begin_layout Standard
-Within each section or subsection, you should further partition the paper
- into paragraphs.
- Do not indent the first line of a given paragraph, but insert a blank line
- between succeeding ones.
-\end_layout
-
-\begin_layout Standard
-You can use footnotes to provide readers with additional information about
- a topic without interrupting the flow of the paper.
- Indicate footnotes with a number in the text where the point is most relevant.
- Place the footnote in 9
-\begin_inset space ~
-\end_inset
-
-point type at the bottom of the column in which it appears.
- Precede the first footnote in a column with a horizontal rule of 0.8
-\begin_inset space ~
-\end_inset
-
-inches.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement ht
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip
-\end_layout
-
-\end_inset
-
- 0.2in 
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/boundary_circle_1.eps
-	clip
-	rotateOrigin center
-	special width=\columnwidth
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Historical locations and number of accepted papers for International Machine
- Learning Conferences (ICML 1993 -- ICML 2008) and International Workshops
- on Machine Learning (ML 1988 -- ML 1992).
- At the time this figure was produced, the number of accepted papers for
- ICML 2008 was unknown and instead estimated.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset CommandInset label
-LatexCommand label
-name "icml-historical"
-
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-vskip
-\end_layout
-
-\end_inset
-
- -0.2in 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You may also want to include tables that summarize material.
- Like figures, these should be centered, legible, and numbered consecutively.
- However, place the title 
-\shape italic
-above
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
-
-\shape default
- the table with at least 0.1
-\begin_inset space ~
-\end_inset
-
-inches of space before the title and the same after it, as in Table
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:accuracy-ml-methods"
-
-\end_inset
-
-.
- The table title should be set in 9
-\begin_inset space ~
-\end_inset
-
-point type and centered unless it runs two or more lines, in which case
- it should be flush left.
-\end_layout
-
 \begin_layout Section
 Conclusion
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Subsection
@@ -874,7 +726,7 @@ errCv
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.00667
+0.0667
 \end_layout
 
 \end_inset
@@ -883,7 +735,7 @@ errCv
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.00667
+0.0667
 \end_layout
 
 \end_inset
@@ -1047,6 +899,18 @@ key "Ng_ML_Class"
  uploaded.
  The authors would gladly provide the data to any interested reader upon
  request.
+\end_layout
+
+\begin_layout Subsection
+Improvements and Future Work
+\end_layout
+
+\begin_layout Standard
+Collecting more images from the worm and re-running the learning algorithms
+ would definitely enhance their performance in terms of accuracy.
+ A possible extension of the project would be to investigate whether other
+ images from the stack file could be used in addition to the sharpest image
+ to infer edges of the mitochondria because they are 3D structures.
 \end_layout
 
 \begin_layout Standard
