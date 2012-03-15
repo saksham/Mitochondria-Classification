@@ -133,6 +133,14 @@ represents the label for
 .
  The input for the logistic regression learning algorithm was the mean of
  the ratio of eigenvalues and the circularity measure.
+ Standard MATLAB optimization function 
+\shape italic
+\size footnotesize
+fminunc
+\shape default
+\size default
+ was used for optimizing the cost function, with maximum number of iterations
+ set to 500.
 \end_layout
 
 \begin_layout Standard
@@ -168,6 +176,7 @@ reference "fig:Classification-using-logistic"
 \end_inset
 
  shows decision boundary for the classification.
+ 
 \end_layout
 
 \begin_layout Standard

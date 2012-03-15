@@ -69,7 +69,7 @@ To extract relevant features from the images preprocessing is necessary.
 \end_layout
 
 \begin_layout Paragraph*
-Sharpest image.
+Sharpest image:
 \end_layout
 
 \begin_layout Standard
@@ -165,7 +165,7 @@ The higher the value
 \end_layout
 
 \begin_layout Paragraph
-Histogram analysis.
+Histogram analysis:
 \end_layout
 
 \begin_layout Standard
@@ -342,14 +342,20 @@ The gray scale levels in between are scaled to fit into the histogram of
 \end_layout
 
 \begin_layout Paragraph
-Boundaries and blob-detection.
+Boundaries and blob detection:
 \end_layout
 
 \begin_layout Standard
 After improving the contrast of each image it can easily be converted to
  a binary image in that the mitochondria can be found as white areas.
- Using the MatLab function 'bwboundaries' it is possible to trace the exterior
- boundaries of the mitochondria in the binary image.
+ Using the MatLab function '
+\shape italic
+\size footnotesize
+bwboundaries
+\shape default
+\size default
+' it is possible to trace the exterior boundaries of the mitochondria in
+ the binary image.
  After filtering out objects that are too big or too small to be valid mitochond
 ria we have generated a set of vectors each containing the borders of one
  of the mitochondria.
@@ -431,10 +437,17 @@ Detected tubular mitochondria
 
 \begin_layout Subsection
 Feature extraction
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Feature-extraction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
-Circularity.
+Circularity:
 \end_layout
 
 \begin_layout Standard
@@ -598,7 +611,7 @@ Blob boundary line shaped distributed
 \end_layout
 
 \begin_layout Paragraph
-Covariance analysis.
+Covariance analysis:
 \end_layout
 
 \begin_layout Standard
@@ -659,7 +672,7 @@ reference "fig:classification-pipeline"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -730,10 +743,6 @@ vskip
 
 \end_layout
 
-\begin_layout Paragraph
-Blob Image for Neural Network
-\end_layout
-
 \begin_layout Standard
 For the Neural Network (only) the blobs have been used directly to train
  the model and make predictions.
@@ -743,8 +752,12 @@ For the Neural Network (only) the blobs have been used directly to train
 \end_layout
 
 \begin_layout Standard
-First of all the blobs are resized to fit into an image of size 20x20.
- In this image they are centered and the space between the boundaries is
+First of all the blobs are resized to fit into an image of size 20
+\begin_inset Formula $\times$
+\end_inset
+
+20.
+ In this image, they are centered and the space between the boundaries is
  filled.
  Vectorizing these single blob images produces an 400 dimensional feature
  space that can be used to train and predict on an Neural Network.

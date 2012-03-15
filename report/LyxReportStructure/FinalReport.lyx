@@ -341,10 +341,6 @@ filename "neural_network.lyx"
 Conclusion
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Subsection
 Classification accuracy
 \end_layout
@@ -887,14 +883,14 @@ The software used for the project is available for free under the url: https://s
 aksham@github.com/saksham/Mitochondria-Classification.git.
  The repository contains all the code used along with some sample images
  that are used for functional tests.
- Code for assignments from Stanford Online Machine Learning class 
+ Code for assignments from Stanford Online Machine Learning class [
 \begin_inset CommandInset citation
 LatexCommand citet
 key "Ng_ML_Class"
 
 \end_inset
 
- have been adapted, reused and appropriately attributed.
+] have been adapted, reused and appropriately attributed.
  Due to the large size of stack files, the entire sample data has not been
  uploaded.
  The authors would gladly provide the data to any interested reader upon
@@ -908,9 +904,29 @@ Improvements and Future Work
 \begin_layout Standard
 Collecting more images from the worm and re-running the learning algorithms
  would definitely enhance their performance in terms of accuracy.
- A possible extension of the project would be to investigate whether other
- images from the stack file could be used in addition to the sharpest image
- to infer edges of the mitochondria because they are 3D structures.
+ At the moment of this writing, deconvolving [
+\begin_inset CommandInset citation
+LatexCommand citet
+key "software_deconvolution"
+
+\end_inset
+
+] and thresholding [
+\begin_inset CommandInset citation
+LatexCommand citet
+key "software_metamorph"
+
+\end_inset
+
+] images from the microscope is a time consuming process, and the training
+ sample available to comprised of less than 50 images.
+ Although there are upto 50 mitochondria detected in each image, getting
+ more images and enriching the training sample would improve the performance
+ of the learning algorithms.
+ A possible extension of the project would be to investigate whether images
+ from the stack file other than the sharpest image could provide additional
+ spatial information so that edges could be better inferred from the sharpest
+ image.
 \end_layout
 
 \begin_layout Standard
