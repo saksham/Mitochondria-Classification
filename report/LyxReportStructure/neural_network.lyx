@@ -110,7 +110,7 @@ vskip
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename images/l1_nn.eps
+	filename images/c1_nn.eps
 	special width=\columnwidth
 
 \end_inset
@@ -122,7 +122,8 @@ vskip
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classification using 3-layered neural network
+Classification using 3-layered NN; the red and green outlines show the tubular
+ and fragmented mitochondria as classified by the learning algorithm.
 \end_layout
 
 \end_inset
@@ -157,6 +158,27 @@ vskip
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:nn-classifiication"
+
+\end_inset
+
+ shows how the neural network classifies the mitochondria on a cell marked
+ as 
+\shape italic
+fragmented
+\shape default
+.
+ Similar results were obtained on a cell marked as 
+\shape italic
+tubular
+\shape default
+.
 \end_layout
 
 \end_body
