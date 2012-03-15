@@ -346,7 +346,7 @@ Classification accuracy
 \end_layout
 
 \begin_layout Standard
-Relative performance of each of the classification method described in Section
+Relative performance of each of the classification method described in section
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -354,7 +354,7 @@ reference "sec:Classification"
 
 \end_inset
 
- is shown in Table 
+ is shown in table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:accuracy-ml-methods"
@@ -384,19 +384,48 @@ on.
 \end_layout
 
 \begin_layout Standard
-As mentioned in Section 
+As mentioned in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:data-acquisition"
 
 \end_inset
 
-, the black and white percentages are quite important for the performance
- of learning algorithms.
- Grid search was performed ...........................................
- to find the best values for these two parameters.
- The values of black and white percentages used for the comparison in Table
- 
+, the black and white percentages 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{u}$
+\end_inset
+
+ are quite important for the performance of learning algorithms.
+ Interior point optimization was performed to find the best values for these
+ two parameters.
+ The error to optimize on was how linear seperable the data set becomes
+ while changing the values for 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{u}$
+\end_inset
+
+ under the inequality constraint 
+\begin_inset Formula $b_{l}+b_{u}\leq1$
+\end_inset
+
+.
+ The lower the error the more linear sepperable the has been.
+ The values of 
+\begin_inset Formula $b_{l}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{u}$
+\end_inset
+
+ used for the comparison in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:accuracy-ml-methods"
