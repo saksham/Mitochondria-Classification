@@ -90,7 +90,7 @@ To fit a multivariate gaussian on the data of one class it is necessary
 \end_inset
 
 .
- This can be done using the closed forms
+ This can be done solving for the closed forms
 \end_layout
 
 \begin_layout Standard
@@ -117,7 +117,7 @@ To fit a multivariate gaussian on the data of one class it is necessary
 
 \begin_layout Standard
 using MLE.
- These are the values that fitting best for the data seen during training.
+ These are the values that fitts best for the data seen during training.
  In 2D these Gaussian can be shown as ellipses over the data points.
 \end_layout
 
@@ -155,10 +155,6 @@ Multivariate Gaussians fitted on data set
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
