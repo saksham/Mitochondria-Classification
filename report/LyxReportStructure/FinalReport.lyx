@@ -32,7 +32,7 @@
 % Employ this version of the ``usepackage'' statement after the paper has
 % been accepted, when creating the final version.  This will set the
 % note in the first column to ``Appearing in''
-\usepackage[accepted]{icml2010}
+\usepackage{icml2010}
 
 
 % The \icmltitle you define below is probably too long as a header.
@@ -63,7 +63,7 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_title "Automatic Classification of C-Elegans Mitochondria using Machine Learning"
+\pdf_title "Automatic Classification of C. Elegans Mitochondria using Machine Learning"
 \pdf_author "Daniel Hein, Saksham Gautam"
 \pdf_subject "Machine Learning"
 \pdf_keywords "Machine Learning, Classification, Mitochondria, C-Elegans"
@@ -246,7 +246,7 @@ Data Acquisition, Processing and Feature Extraction (something like that)
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "data-acquisition"
+name "sec:data-acquisition"
 
 \end_inset
 
@@ -265,6 +265,13 @@ filename "data_pre_processing.lyx"
 
 \begin_layout Section
 Classification
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Classification"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -276,6 +283,16 @@ Four machine learning algorithms: maximum likelihood estimation (MLE), logistic
 
 \begin_layout Subsection
 MLE
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "mle.lyx"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -311,6 +328,16 @@ Neural Networks
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "neural_network.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Within each section or subsection, you should further partition the paper
  into paragraphs.
  Do not indent the first line of a given paragraph, but insert a blank line
@@ -318,18 +345,8 @@ Within each section or subsection, you should further partition the paper
 \end_layout
 
 \begin_layout Standard
-You can use footnotes
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-For the sake of readability, footnotes should be complete sentences.
-\end_layout
-
-\end_inset
-
- to provide readers with additional information about a topic without interrupti
-ng the flow of the paper.
+You can use footnotes to provide readers with additional information about
+ a topic without interrupting the flow of the paper.
  Indicate footnotes with a number in the text where the point is most relevant.
  Place the footnote in 9
 \begin_inset space ~
@@ -341,17 +358,6 @@ point type at the bottom of the column in which it appears.
 \end_inset
 
 inches.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Multiple footnotes can appear in each column, in the same order as they
- appear in the text, but spread them across columns and pages if possible.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -470,7 +476,7 @@ inches of space before the title and the same after it, as in Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sample-table"
+reference "table:accuracy-ml-methods"
 
 \end_inset
 
@@ -483,48 +489,79 @@ point type and centered unless it runs two or more lines, in which case
  it should be flush left.
 \end_layout
 
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Subsection
+Classification accuracy
+\end_layout
+
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Note use of 
-\backslash
-abovespace and 
-\backslash
-belowspace to get reasonable spacing 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
+Relative performance of each of the classification method described in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Classification"
 
 \end_inset
 
+ is shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:accuracy-ml-methods"
 
-\begin_inset ERT
-status collapsed
+\end_inset
 
-\begin_layout Plain Layout
+.
+ The accuracy was calculated by just counting the number of correctly classified
+ images.
+ Because the sample size for both classes were comparable to each other,
+ there was no apparent need to use other accuracy measures like F1 score.
+\end_layout
 
-% above and below tabular lines.
+\begin_layout Standard
+Only one image from an entire stack file could be used because the boundary
+ of mitochondria were not distinct.
+ The blob detection algorithm on these images performed poorly because multiple
+ fragmented mitochondria were (wrongly) detected as a single tubular mitochondri
+on.
+ k-fold cross-validation was used to find the best set of hyper-parameters,
+ with 
+\begin_inset Formula $k=20$
+\end_inset
+
+.
  
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
+\begin_layout Standard
+As mentioned in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:data-acquisition"
 
 \end_inset
 
+, the black and white percentages are quite important for the performance
+ of learning algorithms.
+ Grid search was performed ...........................................
+ to find the best values for these two parameters.
+ The values of black and white percentages used for the comparison in Table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:accuracy-ml-methods"
 
+\end_inset
+
+ are 0.8438 and 0.1094 respectively.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 placement t
-wide false
+wide true
 sideways false
 status open
 
@@ -532,8 +569,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Classification accuracies for naive Bayes and flexible Bayes on various
- data sets.
+Classification accuracies for various ML methods.
 \end_layout
 
 \end_inset
@@ -544,7 +580,7 @@ Classification accuracies for naive Bayes and flexible Bayes on various
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "sample-table"
+name "table:accuracy-ml-methods"
 
 \end_inset
 
@@ -593,9 +629,10 @@ begin{sc}
 
  
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="5">
+<lyxtabular version="3" rows="5" columns="6">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -606,7 +643,7 @@ begin{sc}
 
 \begin_layout Plain Layout
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -630,7 +667,7 @@ belowspace
 
 \end_inset
 
- Data set 
+
 \end_layout
 
 \end_inset
@@ -639,7 +676,7 @@ belowspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-Naive 
+MLE
 \end_layout
 
 \end_inset
@@ -648,7 +685,7 @@ Naive
 \begin_inset Text
 
 \begin_layout Plain Layout
-Flexible 
+SVM
 \end_layout
 
 \end_inset
@@ -657,7 +694,16 @@ Flexible
 \begin_inset Text
 
 \begin_layout Plain Layout
-Better? 
+SVM Kernel 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LogReg 
 \end_layout
 
 \end_inset
@@ -666,14 +712,14 @@ Better?
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+NN
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -689,396 +735,52 @@ abovespace
 
 \end_inset
 
- Breast 
+ blob features (F) or images(I)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-95.9
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.2
+F
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-96.7
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.2
+F
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\surd$
-\end_inset
-
- 
+F
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+F
 \end_layout
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cleveland 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-83.3
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-80.0
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\times$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Glass2 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-61.9
-\begin_inset Formula $\pm$
-\end_inset
-
- 1.4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-83.8
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\surd$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Credit 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-74.8
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-78.3
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Horse 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-73.3
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-69.7
-\begin_inset Formula $\pm$
-\end_inset
-
- 1.0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\times$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Meta 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-67.1
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-76.5
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\surd$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pima 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-75.1
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-73.9
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+I
 \end_layout
 
 \end_inset
@@ -1089,19 +791,137 @@ Pima
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
+options
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no prior
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c=100$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c=100$
+\end_inset
+
+, Gaussian Kernel, 
+\begin_inset Formula $\sigma^{2}=0.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
 
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+input nodes=400
 \backslash
-belowspace
+, hidden nodes = 10
+\backslash
+, 
+\begin_inset Formula $\lambda=2$
+\end_inset
+
+, iterations = 20
 \end_layout
 
 \end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
 
- Vehicle 
+\begin_layout Plain Layout
+errCv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.00667
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.00667
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0917
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2250
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2333
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+errTrain 
 \end_layout
 
 \end_inset
@@ -1110,11 +930,7 @@ belowspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-44.9
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.6
+0.0694
 \end_layout
 
 \end_inset
@@ -1123,11 +939,7 @@ belowspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-61.5
-\begin_inset Formula $\pm$
-\end_inset
-
- 0.4
+0.0601
 \end_layout
 
 \end_inset
@@ -1136,10 +948,16 @@ belowspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\surd$
-\end_inset
+0.0598
+\end_layout
 
- 
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1172
 \end_layout
 
 \end_inset
@@ -1160,7 +978,7 @@ belowspace
 
 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1208,206 +1026,27 @@ vskip
 
 \end_layout
 
-\begin_layout Standard
-Tables contain textual material that can be typeset, as contrasted with
- figures, which contain graphical material that must be drawn.
- Specify the contents of each row and column in the table's topmost row.
- Again, you may float tables to a column's top or bottom, and set wide tables
- across both columns, but place two-column tables at the top or bottom of
- the page.
-\end_layout
-
-\begin_layout Subsection
-Citations and References
-\end_layout
-
-\begin_layout Standard
-Please use APA reference format regardless of your formatter or word processor.
- If you rely on the LaTeX
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-/
-\end_layout
-
-\end_inset
-
- bibliographic facility, use 
-\family typewriter
-natbib.sty
-\family default
- and 
-\family typewriter
-icml2010.bst
-\family default
- included in the style-file package to obtain this format.
-\end_layout
-
-\begin_layout Standard
-Citations within the text should include the authors' last names and year.
- If the authors' names are included in the sentence, place only the year
- in parentheses, for example when referencing Arthur Samuel's pioneering
- work 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-yrcite
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Samuel59
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-.
- Otherwise place the entire reference in parentheses with the authors and
- year separated by a comma 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Samuel59"
-
-\end_inset
-
-.
- List multiple references separated by semicolons 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "kearns89,Samuel59,mitchell80"
-
-\end_inset
-
-.
- Use the `et
-\begin_inset space ~
-\end_inset
-
-al.' construct only for citations with three or more authors or after listing
- all authors to a publication in an earlier reference 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "MachineLearningI"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Authors should cite their own work in the third person in the initial version
- of their paper submitted for blind review.
- Please refer to Section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "author info"
-
-\end_inset
-
- for detailed instructions on how to cite your own papers.
-\end_layout
-
-\begin_layout Standard
-Use an unnumbered first-level section heading for the references, and use
- a hanging indent style, with the first line of the reference flush against
- the left margin and subsequent lines indented by 10 points.
- The references at the end of this document give examples for journal articles
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Samuel59"
-
-\end_inset
-
-, conference publications 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "langley00"
-
-\end_inset
-
-, book chapters 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Newell81"
-
-\end_inset
-
-, books 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "DudaHart2nd"
-
-\end_inset
-
-, edited volumes 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "MachineLearningI"
-
-\end_inset
-
-, technical reports 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "mitchell80"
-
-\end_inset
-
-, and dissertations 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "kearns89"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Alphabetize references by the surnames of the first authors, with single
- author entries preceding multiple author entries.
- Order references for the same authors by year of publication, with the
- earliest first.
- Make sure that each reference includes all relevant information (e.g., page
- numbers).
-\end_layout
-
 \begin_layout Subsection
 Software and Data
 \end_layout
 
 \begin_layout Standard
-The software used for the project is available for free under the url: .
+The software used for the project is available for free under the url: https://s
+aksham@github.com/saksham/Mitochondria-Classification.git.
+ The repository contains all the code used along with some sample images
+ that are used for functional tests.
+ Code for assignments from Stanford Online Machine Learning class 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Ng_ML_Class"
+
+\end_inset
+
+ have been adapted, reused and appropriately attributed.
+ Due to the large size of stack files, the entire sample data has not been
+ uploaded.
+ The authors would gladly provide the data to any interested reader upon
+ request.
 \end_layout
 
 \begin_layout Standard
@@ -1419,10 +1058,6 @@ status open
 
 \backslash
 bibliographystyle{icml2010}
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
