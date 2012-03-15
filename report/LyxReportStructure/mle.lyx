@@ -128,6 +128,12 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/MAP_0_8438_-_0_1094.eps
+	special width=\columnwidth
+
+\end_inset
+
 
 \end_layout
 
@@ -135,7 +141,7 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Multivariate Gaussian
+Multivariate Gaussians fitted on data set
 \end_layout
 
 \end_inset
@@ -149,6 +155,10 @@ Multivariate Gaussian
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
