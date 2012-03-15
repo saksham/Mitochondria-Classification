@@ -220,6 +220,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/l1_o.tif
 	special width=\columnwidth
@@ -623,7 +624,7 @@ The covariance analysis is yet another way to generate a feature based on
 
  will belong to the eigenvector pointing in the direction along which the
  original blob data is distributed.
- So the proportion
+ So the ratio
 \end_layout
 
 \begin_layout Standard
@@ -641,13 +642,67 @@ e_{\lambda}=\lambda_{b}/\lambda_{s}
 is close to zero if the data has been line shaped distributed.
 \end_layout
 
-\begin_layout Paragraph
-Blob image.
+\begin_layout Standard
+After blob detection, the ratio of the eigenvalues and the circularity measure
+ were passed as input to various classification algorithms as shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:classification-pipeline"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-For the Neural Network the blobs have been used directly to train the model
- and make predictions.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:classification-pipeline"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/Pipeline.png
+	special width=\columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Overview of the classification pipeline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Blob Image for Neural Network
+\end_layout
+
+\begin_layout Standard
+For the Neural Network (only) the blobs have been used directly to train
+ the model and make predictions.
  Despite now none of the extraction functions described above have been
  used still some image pre-processing is necessary.
  

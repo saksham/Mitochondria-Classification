@@ -230,74 +230,13 @@ Background
 \end_layout
 
 \begin_layout Standard
-Mitochondria are cell organelles that generate energy currency of the cell
- called ATPs by a series of chemical reactions in the body.
- ATP can then be readily absorbed by the cell to meet its energy demands.
- In doing so, mitochondria also generate free radicals mostly in the form
- of reactive oxygen species as a by product of the reactions.
- These free radicals are harmful to the cell.
- There is an ongoing research at Cell and Developmental Biology Department
- at LMU about how mitochondria changes its morphology with age in the free-livin
-g transparent worms called 
-\shape italic
-Caenorhabditis elegans
-\shape default
-.
- The hypothesis in the field is that mitochondrial production of ATP over
- time damages cells and brings about aging.
- Moreover, not only the morphology of single mitochondria, but also the
- dynamics of mitochondiral fission and fusion in a cell are associated with
- cell death 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Mitochondria_Cell_Death"
+\begin_inset CommandInset include
+LatexCommand input
+filename "background.lyx"
 
 \end_inset
 
-.
-\end_layout
 
-\begin_layout Standard
-In order to analyse mitochondrial morphology, worms with fluorescent mitochondri
-a are put under a fluorescence microscope and 10 to 20 pictures of it are
- generated.
- As the worm is transparent, photographing it with different focuses yields
- to photographs of different levels of the worm.
- After that, each image “
-\shape italic
-slice
-\shape default
-” of the worm is scrutinized on the computer screen to find just one picture
- where cells are clearly visible.
- Using computer imaging software, the photographs are discretized until
- mitochondria can be separated from background fluorescence.
- Afterwards, another routine of this program computes different attributes
- of the shape of the areas refined during the previous step.
- These are attributes like “circularity” (shape compared to a perfect circle),
- length of one mitochondria, kind of clustering, etc.
- These data are used to classify the morphology of the mitochondria into
- three classes: 
-\shape italic
-fragmented
-\shape default
-, 
-\shape italic
-tubular
-\shape default
- and 
-\shape italic
-in between
-\shape default
-.
- As this process involves human based classification, it is prone to biases
- based on the hypothesis of the experiment.
- Hence, there was a need for an automatic classification of the organelles
- based on just the images.
-\end_layout
-
-\begin_layout Standard
-This report presents an overview of four machine learning algorithms along
- with the findings regarding their accuracy, for this classification task.
 \end_layout
 
 \begin_layout Section
@@ -333,44 +272,6 @@ Four machine learning algorithms: maximum likelihood estimation (MLE), logistic
  regression, support vector machine (SVM) and neural networks, were used
  for classifying the mitochondria from the sharpest image.
  Each of them is discussed in detail below.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename images/Pipeline.png
-	special width=\columnwidth
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Overview of the classification pipeline
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection

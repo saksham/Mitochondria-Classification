@@ -220,6 +220,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename images/l1_o.tif
 	special width=\columnwidth
@@ -361,6 +362,12 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/c1_m.eps
+	special width=\columnwidth
+
+\end_inset
+
 
 \end_layout
 
@@ -369,6 +376,43 @@ status open
 
 \begin_layout Plain Layout
 Detected fragmented mitochondria
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/l1_m.eps
+	special width= \columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Detected tubular mitochondria
 \end_layout
 
 \end_inset
@@ -598,24 +642,46 @@ e_{\lambda}=\lambda_{b}/\lambda_{s}
 is close to zero if the data has been line shaped distributed.
 \end_layout
 
-\begin_layout Paragraph
-Blob image.
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
-For the Neural Network the blobs have been used directly to train the model
- and make predictions.
- Despite now none of the extraction functions described above have been
- used still some image pre-processing is necessary.
- 
+After blob detection, the 
 \end_layout
 
 \begin_layout Standard
-First of all the blobs are resized to fit into an image of size 20x20.
- In this image they are centered and the space between the boundaries is
- filled.
- Vectorizing these single blob images produces an 400 dimensional feature
- space that can be used to train and predict on an Neural Network.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Pipeline.png
+	special width=\columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Overview of the classification pipeline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

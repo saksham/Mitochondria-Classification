@@ -1,0 +1,134 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Mitochondria are cell organelles that generate energy currency of the cell
+ called ATPs by a series of chemical reactions in the body.
+ ATP can then be readily absorbed by the cell to meet its energy demands.
+ In doing so, mitochondria also generate free radicals mostly in the form
+ of reactive oxygen species as a by product of the reactions.
+ These free radicals are harmful to the cell.
+ There is an ongoing research at Cell and Developmental Biology Department
+ at LMU about how mitochondria changes its morphology with age in the free-livin
+g transparent worms called 
+\shape italic
+Caenorhabditis elegans
+\shape default
+.
+ The hypothesis in the field is that mitochondrial production of ATP over
+ time damages cells and brings about aging.
+ Moreover, not only the morphology of single mitochondria, but also the
+ dynamics of mitochondiral fission and fusion in a cell are associated with
+ cell death 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Mitochondria_Cell_Death"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In order to analyse mitochondrial morphology, worms with fluorescent mitochondri
+a are put under a fluorescence microscope and 10 to 20 pictures of it are
+ generated.
+ As the worm is transparent, photographing it with different focuses yields
+ to photographs of different levels of the worm.
+ After that, each image “
+\shape italic
+slice
+\shape default
+” of the worm is scrutinized on the computer screen to find just one picture
+ where cells are clearly visible.
+ Using computer imaging software, the photographs are discretized until
+ mitochondria can be separated from background fluorescence.
+ Afterwards, another routine of this program computes different attributes
+ of the shape of the areas refined during the previous step.
+ These are attributes like “circularity” (shape compared to a perfect circle),
+ length of one mitochondria, kind of clustering, etc.
+ These data are used to classify the morphology of the mitochondria into
+ three classes: 
+\shape italic
+fragmented
+\shape default
+, 
+\shape italic
+tubular
+\shape default
+ and 
+\shape italic
+in between
+\shape default
+.
+ As this process involves human based classification, it is prone to biases
+ based on the hypothesis of the experiment.
+ Hence, there was a need for an automatic classification of the organelles
+ based on just the images.
+\end_layout
+
+\begin_layout Standard
+This report presents an overview of four machine learning algorithms along
+ with the findings regarding their accuracy, for this classification task.
+\end_layout
+
+\end_body
+\end_document
