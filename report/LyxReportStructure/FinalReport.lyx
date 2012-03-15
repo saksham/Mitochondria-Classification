@@ -395,11 +395,11 @@ reference "sec:data-acquisition"
 \end_inset
 
 , the black and white percentages 
-\begin_inset Formula $b_{l}$
+\begin_inset Formula $\alpha$
 \end_inset
 
  and 
-\begin_inset Formula $b_{u}$
+\begin_inset Formula $\beta$
 \end_inset
 
  are quite important for the performance of learning algorithms.
@@ -407,15 +407,15 @@ reference "sec:data-acquisition"
  two parameters.
  The error to optimize on was how linear seperable the data set becomes
  while changing the values for 
-\begin_inset Formula $b_{l}$
+\begin_inset Formula $\alpha$
 \end_inset
 
  and 
-\begin_inset Formula $b_{u}$
+\begin_inset Formula $\beta$
 \end_inset
 
- under the inequality constraint 
-\begin_inset Formula $b_{l}+b_{u}\leq1$
+under the inequality constraint 
+\begin_inset Formula $\alpha+\beta\leqslant1$
 \end_inset
 
 .
@@ -604,7 +604,7 @@ abovespace
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob features
+blob features
 \end_layout
 
 \end_inset
@@ -642,7 +642,7 @@ SVM
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob features
+blob features
 \end_layout
 
 \end_inset
@@ -680,7 +680,7 @@ SVM Ker
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob features
+blob features
 \end_layout
 
 \end_inset
@@ -718,7 +718,7 @@ LogReg
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob features
+blob features
 \end_layout
 
 \end_inset
@@ -756,7 +756,7 @@ NN
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob images
+thumbnail
 \end_layout
 
 \end_inset
@@ -851,7 +851,7 @@ key "Ng_ML_Class"
 \end_inset
 
 ] have been adapted, reused and appropriately attributed.
- Due to the large size of stack files, the entire sample data has not been
+ Due to the large size of stack files, not the entire sample data has been
  uploaded.
  The authors would gladly provide the data to any interested reader upon
  request.
@@ -887,6 +887,7 @@ key "software_metamorph"
  from the stack file other than the sharpest image could provide additional
  spatial information so that edges could be better inferred from the sharpest
  image.
+ 
 \end_layout
 
 \begin_layout Standard

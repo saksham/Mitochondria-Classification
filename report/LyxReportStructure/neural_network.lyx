@@ -60,28 +60,42 @@
 \begin_body
 
 \begin_layout Standard
-The 20
-\begin_inset Formula $\times$
-\end_inset
-
-20 images as mentioned in Section
+Unlike features for other learning algorithms, which were based on circularity
+ of blobs, the pixel values of blobs were used as input for the neural network
+ learning algorithm.
+ As mentioned in section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Feature-extraction"
 
 \end_inset
 
-
+ in 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "par:Blob-Image-for-NN"
+reference "par:Thumbnail-Features"
 
 \end_inset
 
- were given as input to a 3-layered neural network with 10 hidden layer
- units and 20 iterations.
- The networked was trained using back-propagation algorithm, with regularization
- constant set to 2.
+, 20
+\begin_inset Formula $\times$
+\end_inset
+
+20px binary images were created for each mitochondrion found in the blob
+ detection phase.
+ The pixel values of the
+\series bold
+\shape italic
+ thumbnail features
+\series default
+\shape default
+ were converted to a 400 dimensional vector.
+ The vector was then passed as an input to a 3-layered neural network with
+ 10 hidden layer units.
+ Sigmoid function of the edge weights were used as activation function for
+ the nodes of the neural network.
+ The network was trained using 20 iterations of back-propagation learning
+ algorithm, with regularization constant set to 2.
 \end_layout
 
 \begin_layout Standard

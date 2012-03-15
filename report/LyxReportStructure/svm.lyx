@@ -291,7 +291,7 @@ reference "eq:constraintsvm3"
 \end_inset
 
  is substituted to the inner product and transforms the decision problem
- to a higher dimension in which the data will become linear seperable.
+ to a higher dimension in which the data will become linearly seperable.
  For the mitochondria classification problem a Gaussian kernel (equation
  
 \begin_inset CommandInset ref
@@ -333,7 +333,7 @@ reference "fig:Gaussian-Kernel-SVM"
 \end_inset
 
  to 0.2.
- The SVM lerned the shape of the data distribution perfectly, but there
+ The SVM learned the shape of the data distribution perfectly, but there
  is also a danger of overfitting on the possible outliers on the bottom
  of the figure.
 \end_layout
