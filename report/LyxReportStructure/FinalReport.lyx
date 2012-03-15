@@ -509,7 +509,7 @@ begin{sc}
 <lyxtabular version="3" rows="6" columns="4">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0pt" special="width=\columnwidth">
+<column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -551,7 +551,7 @@ belowspace
 \begin_inset Text
 
 \begin_layout Plain Layout
-Blob features(F) or Images(I)
+features
 \end_layout
 
 \end_inset
@@ -601,7 +601,7 @@ abovespace
 \begin_inset Text
 
 \begin_layout Plain Layout
-F
+Blob features
 \end_layout
 
 \end_inset
@@ -639,7 +639,7 @@ SVM
 \begin_inset Text
 
 \begin_layout Plain Layout
-F
+Blob features
 \end_layout
 
 \end_inset
@@ -668,7 +668,7 @@ F
 \begin_inset Text
 
 \begin_layout Plain Layout
-SVM Kernel
+SVM Ker
 \end_layout
 
 \end_inset
@@ -677,7 +677,7 @@ SVM Kernel
 \begin_inset Text
 
 \begin_layout Plain Layout
-F
+Blob features
 \end_layout
 
 \end_inset
@@ -715,7 +715,7 @@ LogReg
 \begin_inset Text
 
 \begin_layout Plain Layout
-F
+Blob features
 \end_layout
 
 \end_inset
@@ -753,7 +753,7 @@ NN
 \begin_inset Text
 
 \begin_layout Plain Layout
-I
+Blob images
 \end_layout
 
 \end_inset
