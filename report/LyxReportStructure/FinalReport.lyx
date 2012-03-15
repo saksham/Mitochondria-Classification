@@ -207,8 +207,22 @@ vskip 0.3in
 \end_layout
 
 \begin_layout Abstract
-Mitochondria are cell organelles that generate energy currency of the cell
- called ATPs by a series of chemical reactions in the body.
+Morphology of mitochondria is interesting for cell biologists because it
+ is believed to be linked to various biological pathways and processes.
+ Researchers from the Cell and Developmental Biology Department of Ludwig
+ Maximilians Universität Munich examine these organelles from a free-living
+ worm under a fluorescence microscope and classify them into two categories
+ based on their shapes.
+ This classification is performed by biologists by looking at the sharpest
+ image from the stack of images of the worms obtained from the microscope.
+ This process is biased because the biologists working with the worm have
+ prior expectation on the morphology.
+ Moreover, the human based image analysis is time intensive.
+ There is, hence, a need for an unbiased metric for the morphology of mitochondr
+ia, and possible automation of the morphometric analysis.
+ In this report, the authors suggest use of two features for classification
+ of mitochondria and present their findings on how different machine learning
+ algorithms MLE, logistic regression, SVM and neural networks.
 \end_layout
 
 \begin_layout Section
@@ -249,8 +263,12 @@ a are put under a fluorescence microscope and 10 to 20 pictures of it are
  generated.
  As the worm is transparent, photographing it with different focuses yields
  to photographs of different levels of the worm.
- After that, each “slice” of the worm is scrutinized on the computer screen
- to find just one picture where cells are clearly visible.
+ After that, each image “
+\shape italic
+slice
+\shape default
+” of the worm is scrutinized on the computer screen to find just one picture
+ where cells are clearly visible.
  Using computer imaging software, the photographs are discretized until
  mitochondria can be separated from background fluorescence.
  Afterwards, another routine of this program computes different attributes
@@ -278,8 +296,8 @@ in between
 \end_layout
 
 \begin_layout Standard
-This report presents an overview of the machine learning algorithms that
- we employed, along with our findings, for this classification task.
+This report presents an overview of four machine learning algorithms along
+ with the findings regarding their accuracy, for this classification task.
 \end_layout
 
 \begin_layout Section
@@ -311,16 +329,56 @@ Classification
 \end_layout
 
 \begin_layout Standard
-Four machine learning algorithms were used for classifying the mitochondria
- from 
+Four machine learning algorithms: maximum likelihood estimation (MLE), logistic
+ regression, support vector machine (SVM) and neural networks, were used
+ for classifying the mitochondria from the sharpest image.
+ Each of them is discussed in detail below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/Pipeline.png
+	special width=\columnwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Overview of the classification pipeline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+MLE
 \end_layout
 
 \begin_layout Subsection
 Logistic Regression
-\end_layout
-
-\begin_layout Subsection
-MLE/MAP
 \end_layout
 
 \begin_layout Subsection
@@ -329,10 +387,6 @@ SVM
 
 \begin_layout Subsection
 Neural Networks
-\end_layout
-
-\begin_layout Subsection
-
 \end_layout
 
 \begin_layout Standard
@@ -404,30 +458,19 @@ vskip
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centerline{
-\end_layout
+\begin_inset Graphics
+	filename images/boundary_circle_1.eps
+	clip
+	rotateOrigin center
+	special width=\columnwidth
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
-\end_inset
-
- 
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption
 
 \begin_layout Plain Layout
