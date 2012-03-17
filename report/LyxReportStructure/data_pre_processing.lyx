@@ -477,8 +477,15 @@ tubular
 
 \begin_layout Standard
 Since the boundaries have already been found in an earlier pre-processing
- step, FuzzyCShells method was used to calculate the error that represents
- the average of the distance between the points and the circle.
+ step, FuzzyCShells 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R2010"
+
+\end_inset
+
+ method was used to calculate the error that represents the average of the
+ distance between the points and the circle.
  The centre of the circle is the mean 
 \begin_inset Formula $\mu$
 \end_inset

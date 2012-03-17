@@ -12,7 +12,7 @@
 % For figures
 % more modern
 %\usepackage{epsfig} % less modern
-\usepackage{subfigure}
+\usepackage{subfigure, natbib}
 
 % For citations
 
@@ -39,6 +39,7 @@
 % Therefore, a short form for the running title is supplied here:
 \icmltitlerunning{Automatic Classification of C-Elegans Mitochondria}
 \end_preamble
+\options icml2010,epsf,natbib
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -846,7 +847,7 @@ aksham@github.com/saksham/Mitochondria-Classification.git.
  Code for assignments from Stanford Online Machine Learning class [
 \begin_inset CommandInset citation
 LatexCommand citet
-key "Ng_ML_Class"
+key "Ng2011"
 
 \end_inset
 
@@ -867,14 +868,14 @@ Collecting more images from the worm and re-running the learning algorithms
  At the moment of this writing, deconvolving [
 \begin_inset CommandInset citation
 LatexCommand citet
-key "software_deconvolution"
+key "Cybernetics"
 
 \end_inset
 
 ] and thresholding [
 \begin_inset CommandInset citation
 LatexCommand citet
-key "software_metamorph"
+key "Metamorph"
 
 \end_inset
 
@@ -891,6 +892,17 @@ key "software_metamorph"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -900,16 +912,6 @@ status open
 \backslash
 bibliographystyle{icml2010}
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "references"
 
 \end_inset
 

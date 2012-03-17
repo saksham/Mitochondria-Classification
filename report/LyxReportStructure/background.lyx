@@ -79,8 +79,8 @@ Caenorhabditis elegans
  dynamics of mitochondiral fission and fusion in a cell are associated with
  cell death 
 \begin_inset CommandInset citation
-LatexCommand citet
-key "Mitochondria_Cell_Death"
+LatexCommand cite
+key "EltyebAbdelwahid2011"
 
 \end_inset
 

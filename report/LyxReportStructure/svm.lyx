@@ -64,7 +64,7 @@ Support vector machines (SVM) belong to a group of classifiers called sparse
  kernel machines 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Bishop_Book"
+key "Bishop2006"
 
 \end_inset
 
